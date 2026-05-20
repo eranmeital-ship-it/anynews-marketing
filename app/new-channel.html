@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<title>New channel — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+<style>
+  .wizard-steps { display: flex; gap: 4px; margin-bottom: 32px; }
+  .wizard-step {
+    flex: 1;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    transition: border-color 0.12s;
+  }
+  .wizard-step.active { border-color: var(--purple-700); background: var(--purple-50); }
+  .wizard-step.done { background: var(--surface); }
+  .wizard-step-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--surface-hover);
+    color: var(--text-tertiary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .wizard-step.active .wizard-step-num { background: var(--brand-grad); color: white; }
+  .wizard-step.done .wizard-step-num { background: var(--success); color: white; }
+  .wizard-step-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+  .wizard-step.active .wizard-step-label { color: var(--text-primary); }
+
+  .option-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.12s;
+    position: relative;
+  }
+  .option-card:hover { border-color: var(--border-strong); }
+  .option-card.selected {
+    border-color: var(--purple-700);
+    border-width: 2px;
+    padding: 23px;
+    background: var(--purple-50);
+  }
+  .option-card.selected::after {
+    content: '';
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--purple-700);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .platform-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.12s;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .platform-card:hover { border-color: var(--border-strong); }
+  .platform-card.selected {
+    border-color: var(--purple-700);
+    border-width: 2px;
+    padding: 15px;
+    background: var(--purple-50);
+  }
+  .platform-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-workspace" data-active="channels"></div>
+
+  <main class="app-main" style="max-width: 920px;">
+    <!-- Back link -->
+    <a href="dashboard.html" class="body muted mb-4" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Back to dashboard
+    </a>
+
+    <h1 class="h1 mb-2">New channel</h1>
+    <p class="body muted mb-8">Set up a new AnyNews channel in three steps.</p>
+
+    <!-- Steps indicator -->
+    <div class="wizard-steps">
+      <div class="wizard-step active">
+        <div class="wizard-step-num">1</div>
+        <div>
+          <p class="wizard-step-label">Step 1</p>
+          <p class="body" style="font-weight: 600; margin: 0; font-size: 14px;">Channel details</p>
+        </div>
+      </div>
+      <div class="wizard-step">
+        <div class="wizard-step-num">2</div>
+        <div>
+          <p class="wizard-step-label">Step 2</p>
+          <p class="body" style="font-weight: 600; margin: 0; font-size: 14px;">Add sources</p>
+        </div>
+      </div>
+      <div class="wizard-step">
+        <div class="wizard-step-num">3</div>
+        <div>
+          <p class="wizard-step-label">Step 3</p>
+          <p class="body" style="font-weight: 600; margin: 0; font-size: 14px;">Target platforms</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 1 CONTENT -->
+    <div class="card-lg">
+      <div class="flex flex-col gap-6">
+        <!-- Name -->
+        <div class="field">
+          <label class="field-label">News channel name</label>
+          <input class="input input-lg" id="nc-name" placeholder="e.g. Gold &amp; Silver News" />
+          <p class="tertiary" style="font-size: 12px;">Shown internally and in attribution.</p>
+        </div>
+
+        <!-- Topic -->
+        <div class="field">
+          <label class="field-label">What does this channel cover?</label>
+          <textarea class="textarea" id="nc-description" placeholder="Describe the niche, e.g. 'Daily news on precious metals markets, focused on gold and silver prices, central bank policy, and geopolitical drivers.'"></textarea>
+          <p class="tertiary" style="font-size: 12px;">We use this to filter and score signals.</p>
+        </div>
+
+        <!-- Mode selection -->
+        <div>
+          <p class="field-label mb-2">Publishing mode</p>
+          <div class="grid grid-2 gap-4">
+            <div class="option-card selected">
+              <div class="flex gap-3 mb-2" style="align-items: center;">
+                <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--brand-grad); color: white; display: flex; align-items: center; justify-content: center;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+                </div>
+                <p class="body" style="font-weight: 600;">Automatic</p>
+              </div>
+              <p class="tertiary" style="font-size: 13px;">High-scoring stories publish without your review. Best for high-volume channels you trust.</p>
+            </div>
+            <div class="option-card">
+              <div class="flex gap-3 mb-2" style="align-items: center;">
+                <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--surface-hover); color: var(--text-primary); display: flex; align-items: center; justify-content: center;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <p class="body" style="font-weight: 600;">Manual review</p>
+              </div>
+              <p class="tertiary" style="font-size: 13px;">You approve every post before it goes out. Best for high-stakes channels and editorial brands.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand voice -->
+        <div class="field">
+          <label class="field-label">Brand voice <span class="tertiary" style="font-weight: 400;">(optional)</span></label>
+          <textarea class="textarea" placeholder="e.g. 'Sentence case. Hyphens not em-dashes. Warm but authoritative. Lead with the data. No salesy language.'" rows="3"></textarea>
+          <p class="tertiary" style="font-size: 12px;">The AI uses this when writing post copy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom nav -->
+    <div id="nc-error" class="tertiary mt-4" style="display:none;color:#b91c1c;"></div>
+    <div class="flex-between mt-6">
+      <a href="dashboard.html" class="btn btn-ghost">Cancel</a>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary">Save draft</button>
+        <button class="btn btn-primary" id="nc-submit">
+          Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 PREVIEW (shown below for design review) -->
+    <div id="sources" style="margin-top: 80px; padding-top: 32px; border-top: 2px dashed var(--border);">
+      <p class="label-up mb-2">Preview · Step 2</p>
+      <h2 class="h2 mb-2">Add sources</h2>
+      <p class="body muted mb-6">Where should this channel pull stories from? You can add more later.</p>
+
+      <div class="grid grid-3 gap-4 mb-6">
+        <div class="option-card">
+          <div class="flex gap-3 mb-2" style="align-items: center;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--purple-50); color: var(--purple-700); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+            </div>
+            <p class="body" style="font-weight: 600;">RSS feed</p>
+          </div>
+          <p class="tertiary" style="font-size: 13px;">Most reliable. Paste any RSS or Atom URL.</p>
+        </div>
+        <div class="option-card">
+          <div class="flex gap-3 mb-2" style="align-items: center;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--purple-50); color: var(--purple-700); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <p class="body" style="font-weight: 600;">Website URL</p>
+          </div>
+          <p class="tertiary" style="font-size: 13px;">We'll detect feeds, sitemaps, and crawl the news section.</p>
+        </div>
+        <div class="option-card">
+          <div class="flex gap-3 mb-2" style="align-items: center;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--purple-50); color: var(--purple-700); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg>
+            </div>
+            <p class="body" style="font-weight: 600;">X account</p>
+          </div>
+          <p class="tertiary" style="font-size: 13px;">Follow handles of journalists and outlets directly.</p>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <p class="field-label mb-2">Quick add</p>
+        <div class="flex gap-2">
+          <input class="input" placeholder="Paste an RSS URL, website URL, or X handle..." style="flex: 1;" />
+          <button class="btn btn-primary">Add</button>
+        </div>
+        <p class="tertiary mt-2" style="font-size: 12px;">Or browse our curated source library →</p>
+      </div>
+
+      <p class="label-up mb-2">Added sources (4)</p>
+      <div class="card" style="padding: 0;">
+        <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+          <div class="flex gap-3" style="align-items: center;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #FF6600; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">R</div>
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Reuters — Commodities</p>
+              <p class="tertiary" style="font-size: 12px; margin: 0;">reuters.com/feeds/commodities · RSS</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-success">Active</span>
+            <button class="btn btn-ghost btn-sm" style="padding: 6px 10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="m19 6-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+          <div class="flex gap-3" style="align-items: center;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1a73e8; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">B</div>
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Bloomberg — Markets</p>
+              <p class="tertiary" style="font-size: 12px; margin: 0;">bloomberg.com/markets · Website</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-success">Active</span>
+            <button class="btn btn-ghost btn-sm" style="padding: 6px 10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="m19 6-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+          <div class="flex gap-3" style="align-items: center;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #FBB034; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px;">K</div>
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Kitco News</p>
+              <p class="tertiary" style="font-size: 12px; margin: 0;">kitco.com · RSS</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-success">Active</span>
+            <button class="btn btn-ghost btn-sm" style="padding: 6px 10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="m19 6-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex-between" style="padding: 14px 20px;">
+          <div class="flex gap-3" style="align-items: center;">
+            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1A1A1A; color: white; display: flex; align-items: center; justify-content: center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg>
+            </div>
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">@goldsilver</p>
+              <p class="tertiary" style="font-size: 12px; margin: 0;">X account</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-success">Active</span>
+            <button class="btn btn-ghost btn-sm" style="padding: 6px 10px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="m19 6-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 PREVIEW -->
+    <div id="targets" style="margin-top: 80px; padding-top: 32px; border-top: 2px dashed var(--border);">
+      <p class="label-up mb-2">Preview · Step 3</p>
+      <h2 class="h2 mb-2">Target platforms</h2>
+      <p class="body muted mb-6">Select where this channel publishes. Connect accounts below.</p>
+
+      <div class="grid grid-2 gap-3 mb-8">
+        <div class="platform-card selected">
+          <div class="platform-icon" style="background: #1A1A1A;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <p class="body" style="font-weight: 600; margin: 0;">X (Twitter)</p>
+            <p class="tertiary" style="font-size: 12px;">Connected as @goldsilvernews</p>
+          </div>
+          <span class="badge badge-success">●</span>
+        </div>
+        <div class="platform-card selected">
+          <div class="platform-icon" style="background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608-.058-1.266-.069-1.646-.069-4.85s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311 1.266-.058 1.646-.069 4.85-.069z"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <p class="body" style="font-weight: 600; margin: 0;">Instagram</p>
+            <p class="tertiary" style="font-size: 12px;">Connected as @goldsilvernews</p>
+          </div>
+          <span class="badge badge-success">●</span>
+        </div>
+        <div class="platform-card selected">
+          <div class="platform-icon" style="background: #0A66C2;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <p class="body" style="font-weight: 600; margin: 0;">LinkedIn</p>
+            <p class="tertiary" style="font-size: 12px;">Connected</p>
+          </div>
+          <span class="badge badge-success">●</span>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon" style="background: #1877F2;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 011.141.195v3.325a8.623 8.623 0 00-.653-.036 26.805 26.805 0 00-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 00-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647z"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <p class="body" style="font-weight: 600; margin: 0;">Facebook</p>
+            <p class="tertiary" style="font-size: 12px;">Not connected</p>
+          </div>
+          <button class="btn btn-secondary btn-sm">Connect</button>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon" style="background: #E60023;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 00-4.373 23.178c-.105-.949-.196-2.405.04-3.441.215-.937 1.387-5.965 1.387-5.965s-.354-.711-.354-1.759c0-1.642.953-2.87 2.14-2.87 1.01 0 1.497.756 1.497 1.664 0 1.013-.645 2.529-.98 3.93-.279 1.176.589 2.134 1.748 2.134 2.099 0 3.712-2.213 3.712-5.404 0-2.83-2.033-4.808-4.937-4.808-3.362 0-5.337 2.523-5.337 5.128 0 1.015.39 2.105.879 2.696.097.118.111.221.083.342-.09.375-.293 1.176-.332 1.34-.052.218-.173.265-.401.16-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </div>
+          <div style="flex: 1;">
+            <p class="body" style="font-weight: 600; margin: 0;">Pinterest</p>
+            <p class="tertiary" style="font-size: 12px;">Not connected</p>
+          </div>
+          <button class="btn btn-secondary btn-sm">Connect</button>
+        </div>
+      </div>
+
+      <div class="flex-between">
+        <button class="btn btn-secondary">Back</button>
+        <a href="channel-signal-room.html" class="btn btn-primary btn-lg">
+          Create channel
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+<script type="module">
+  import { createChannel } from '../assets/auth.js';
+  const btn = document.getElementById('nc-submit');
+  const nameEl = document.getElementById('nc-name');
+  const descEl = document.getElementById('nc-description');
+  const errEl = document.getElementById('nc-error');
+  btn.addEventListener('click', async () => {
+    errEl.style.display = 'none';
+    const name = nameEl.value.trim();
+    if (!name) {
+      errEl.textContent = 'Give your channel a name.';
+      errEl.style.display = 'block';
+      nameEl.focus();
+      return;
+    }
+    btn.disabled = true;
+    const original = btn.innerHTML;
+    btn.textContent = 'Creating…';
+    try {
+      const channel = await createChannel({ name, description: descEl.value.trim() });
+      window.location.href = 'channel-signal-room.html?id=' + encodeURIComponent(channel.id);
+    } catch (e) {
+      errEl.textContent = e?.message || 'Could not create channel.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = original;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<script type="module" src="../assets/channel-context.js"></script>
+<title>Brand voice — Gold &amp; Silver News — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-channel" data-active="voice" data-channel-name="Gold &amp; Silver News"></div>
+
+  <main class="app-main" style="max-width: 920px;">
+    <div class="app-header">
+      <div>
+        <p class="label-up">Channel · Gold &amp; Silver News</p>
+        <h1 class="h1 mt-1">Brand voice</h1>
+        <p class="body muted mt-1">Teach the AI how this channel sounds.</p>
+      </div>
+      <button class="btn btn-primary">Save changes</button>
+    </div>
+
+    <div class="card-lg mb-6">
+      <h2 class="h3 mb-4">Voice instructions <span class="help help-below" data-help="The AI reads this every time it writes a post for this channel. Be specific about tone (warm/formal/edgy), formatting rules (sentence case, hyphens vs em-dashes), and what to avoid (superlatives, jargon). The more concrete, the better."></span></h2>
+      <div class="field">
+        <label class="field-label">How should this channel sound?</label>
+        <textarea class="textarea" rows="8">Sentence case always. Hyphens not em-dashes. Warm but authoritative. Lead with the data when possible. Avoid salesy language and superlatives. Don't write "stunning" or "incredible". Trust the reader to draw their own conclusions. Use active verbs. Keep paragraphs short — never more than 3 sentences.</textarea>
+        <p class="tertiary mt-2" style="font-size: 12px;">The AI uses this every time it composes a post for this channel.</p>
+      </div>
+    </div>
+
+    <div class="card-lg mb-6">
+      <h2 class="h3 mb-2">Per-platform tone overrides <span class="help help-below" data-help="Optional. The main voice applies to every platform unless overridden here. Use this when one platform needs a meaningfully different tone — for example, more analytical on LinkedIn, more punchy on X."></span></h2>
+      <p class="body muted mb-4">Optional. Tune the voice differently for each platform.</p>
+      <div class="flex flex-col gap-4">
+        <div class="field">
+          <label class="field-label">X / Twitter</label>
+          <input class="input" placeholder="e.g. Punchy, single-sentence, can be edgier" />
+        </div>
+        <div class="field">
+          <label class="field-label">LinkedIn</label>
+          <input class="input" placeholder="e.g. Lead with analysis. Slightly more formal." />
+        </div>
+        <div class="field">
+          <label class="field-label">Pinterest</label>
+          <input class="input" placeholder="e.g. SEO-friendly, keyword-rich." />
+        </div>
+      </div>
+    </div>
+
+    <div class="card-lg">
+      <h2 class="h3 mb-2">Forbidden words <span class="help help-below" data-help="Comma-separated. The AI is instructed to never use these in posts. Good candidates: lazy adjectives (stunning, incredible, amazing), corporate jargon (synergy, leverage), or words that don't fit your brand voice."></span></h2>
+      <p class="body muted mb-4">Words and phrases the AI must never use in this channel's posts.</p>
+      <input class="input" style="font-family: ui-monospace, SF Mono, monospace; font-size: 13px;" value="stunning, incredible, amazing, game-changer, revolutionary, leverage, synergy" />
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+</body>
+</html>

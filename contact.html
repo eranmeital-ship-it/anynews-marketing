@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Contact — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+
+.contact-split{ display:grid; grid-template-columns:1fr 1.1fr; gap:50px; max-width:980px; margin:0 auto; align-items:start; }
+@media(max-width:780px){ .contact-split{ grid-template-columns:1fr; gap:32px; } }
+.contact-info h2{ font-family:var(--disp); font-weight:800; font-size:28px; letter-spacing:-0.02em; margin-bottom:12px; }
+.contact-info h2 .g{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.contact-info p{ font-size:15px; color:var(--tx-2); line-height:1.68; margin-bottom:24px; }
+.ci-row{ display:flex; gap:14px; align-items:flex-start; margin-bottom:20px; }
+.ci-row .ci-ico{ width:40px; height:40px; border-radius:11px; background:var(--grad-2); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ci-row .ci-tx{ font-size:14px; color:var(--tx-2); line-height:1.5; }
+.ci-row .ci-tx strong{ display:block; color:var(--tx); font-weight:700; margin-bottom:2px; }
+.contact-form{ padding:36px; border:1px solid var(--line); border-radius:22px; background:var(--surf); box-shadow:0 20px 56px -30px rgba(91,33,182,0.3); }
+.cf-row{ margin-bottom:18px; }
+.cf-row label{ display:block; font-size:13px; font-weight:600; color:var(--tx-2); margin-bottom:6px; }
+.cf-row input,.cf-row textarea,.cf-row select{
+  width:100%; padding:13px 16px; border:1px solid var(--line); border-radius:12px;
+  font-size:14px; font-family:var(--body); color:var(--tx); background:var(--bg);
+  transition:border-color .15s,box-shadow .15s; outline:none;
+}
+.cf-row input:focus,.cf-row textarea:focus,.cf-row select:focus{ border-color:var(--v2); box-shadow:0 0 0 3px rgba(124,58,237,0.1); }
+.cf-row textarea{ min-height:120px; resize:vertical; }
+.cf-submit{
+  width:100%; padding:16px; border:none; border-radius:12px; cursor:pointer;
+  font-size:15px; font-weight:700; font-family:var(--body); color:#fff;
+  background:var(--grad); box-shadow:0 14px 36px -12px rgba(124,58,237,0.5);
+  transition:transform .14s,box-shadow .14s;
+}
+.cf-submit:hover{ transform:translateY(-2px); box-shadow:0 20px 44px -12px rgba(124,58,237,0.6); }
+
+</style>
+</head>
+<body>
+<div class="aura"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="shell">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#5B21B6"/><stop offset="0.5" stop-color="#7C3AED"/><stop offset="1" stop-color="#C026D3"/></linearGradient></defs>
+  <rect width="28" height="28" rx="8" fill="url(#lg)"/>
+  <path d="M7 20 L14 8 L21 20" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="14" cy="17" r="2" fill="#fff"/>
+  <path d="M8.5 14.5 L14 14.5 M14 14.5 L19.5 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+</svg></span>AnyNews<span class="ai">.ai</span></a>
+    <div class="nav-links"><a href="index.html" class="">Product</a><a href="pricing.html" class="">Pricing</a><a href="about.html" class="">About</a><a href="contact.html" class="on">Contact</a></div>
+    <div class="nav-right">
+      <a href="#" class="si">Sign in</a>
+      <a href="#" class="btn-pill">Start free</a>
+    </div>
+  </nav>
+  
+  <header class="page-hero">
+    <div class="bound">
+      <div class="ktag rv">Get in touch</div>
+      <h1 class="rv d1">Let's <span class="g">talk.</span></h1>
+      <p class="lede rv d2">Whether you have a question, a partnership idea, or want to learn more about Enterprise — we'd love to hear from you.</p>
+    </div>
+  </header>
+
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="contact-split">
+        <div class="contact-info rv">
+          <h2>Reach us <span class="g">directly.</span></h2>
+          <p>Our team typically responds within one business day. For Enterprise inquiries, we can schedule a call within 24 hours.</p>
+          <div class="ci-row">
+            <span class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <div class="ci-tx"><strong>Email</strong>hello@anynews.ai</div>
+          </div>
+          <div class="ci-row">
+            <span class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div class="ci-tx"><strong>Based in</strong>Available globally, headquartered remotely.</div>
+          </div>
+          <div class="ci-row">
+            <span class="ci-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <div class="ci-tx"><strong>Response time</strong>Within 1 business day. Enterprise inquiries prioritized.</div>
+          </div>
+        </div>
+        <div class="contact-form rv d1">
+          <div class="cf-row"><label>Name</label><input type="text" placeholder="Your name"/></div>
+          <div class="cf-row"><label>Email</label><input type="email" placeholder="you@company.com"/></div>
+          <div class="cf-row"><label>Subject</label>
+            <select><option>General inquiry</option><option>Enterprise pricing</option><option>Partnership</option><option>Press</option><option>Support</option></select>
+          </div>
+          <div class="cf-row"><label>Message</label><textarea placeholder="Tell us what you need..."></textarea></div>
+          <button class="cf-submit">Send message →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="bound">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#5B21B6"/><stop offset="0.5" stop-color="#7C3AED"/><stop offset="1" stop-color="#C026D3"/></linearGradient></defs>
+  <rect width="28" height="28" rx="8" fill="url(#lg)"/>
+  <path d="M7 20 L14 8 L21 20" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="14" cy="17" r="2" fill="#fff"/>
+  <path d="M8.5 14.5 L14 14.5 M14 14.5 L19.5 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+</svg></span>AnyNews<span class="ai">.ai</span></a>
+          <p>The first complete AI newsroom. From signal to published in under 60 seconds.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Product</h4>
+          <a href="index.html">Home</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="affiliate.html">Affiliates</a>
+          <a href="#">API docs</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="cookies.html">Cookie Policy</a>
+          <a href="acceptable-use.html">Acceptable Use</a>
+          <a href="gdpr.html">GDPR Rights</a>
+          <a href="dmca.html">DMCA</a>
+          <a href="refund.html">Refunds</a>
+          <a href="sla.html">SLA</a>
+          <a href="dpa.html">DPA</a>
+          <a href="security.html">Security</a>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <a href="#">X (Twitter)</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 AnyNews.ai — All rights reserved.</span>
+        <span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a></span>
+      </div>
+    </div>
+  </footer>
+</div>
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<title>Analytics — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+<style>
+  .chart-bars {
+    display: flex;
+    align-items: end;
+    gap: 6px;
+    height: 160px;
+    padding: 16px 0;
+  }
+  .chart-bars .bar {
+    flex: 1;
+    background: var(--brand-grad);
+    border-radius: 4px 4px 0 0;
+    min-height: 4px;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-workspace" data-active="analytics"></div>
+
+  <main class="app-main">
+    <div class="app-header">
+      <div>
+        <p class="label-up">Workspace</p>
+        <h1 class="h1 mt-1">Analytics</h1>
+        <p class="body muted mt-1">Performance across all your news channels.</p>
+      </div>
+      <select class="select" style="width: auto;">
+        <option>Last 30 days</option>
+        <option>Last 7 days</option>
+        <option>Last 90 days</option>
+      </select>
+    </div>
+
+    <!-- Workspace stats -->
+    <div class="grid grid-3 gap-4 mb-6">
+      <div class="card-gradient" style="padding: 24px; border-radius: 16px;">
+        <p style="font-size: 12px; opacity: 0.85; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px;">Total posts</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 0; letter-spacing: -0.02em;">408</p>
+        <p style="font-size: 13px; opacity: 0.9; margin: 4px 0 0;">↑ 24% vs prev 30d</p>
+      </div>
+      <div class="card">
+        <p class="label-up">Total impressions</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 4px 0 0; letter-spacing: -0.02em;">218k</p>
+        <p class="tertiary" style="font-size: 12px;"><span style="color: var(--success);">↑ 18%</span> vs prev 30d</p>
+      </div>
+      <div class="card">
+        <p class="label-up">Workspace engagement</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 4px 0 0; letter-spacing: -0.02em;">4.1%</p>
+        <p class="tertiary" style="font-size: 12px;"><span style="color: var(--success);">↑ 0.4pp</span> vs prev 30d</p>
+      </div>
+    </div>
+
+    <!-- Workspace activity chart -->
+    <div class="card mb-6">
+      <div class="flex-between mb-2">
+        <h2 class="h3">Posts per day across all channels</h2>
+        <span class="tertiary" style="font-size: 12px;">Last 14 days</span>
+      </div>
+      <div class="chart-bars">
+        <div class="bar" style="height: 45%;"></div>
+        <div class="bar" style="height: 60%;"></div>
+        <div class="bar" style="height: 52%;"></div>
+        <div class="bar" style="height: 72%;"></div>
+        <div class="bar" style="height: 68%;"></div>
+        <div class="bar" style="height: 82%;"></div>
+        <div class="bar" style="height: 65%;"></div>
+        <div class="bar" style="height: 88%;"></div>
+        <div class="bar" style="height: 75%;"></div>
+        <div class="bar" style="height: 95%;"></div>
+        <div class="bar" style="height: 80%;"></div>
+        <div class="bar" style="height: 92%;"></div>
+        <div class="bar" style="height: 98%;"></div>
+        <div class="bar" style="height: 90%;"></div>
+      </div>
+    </div>
+
+    <!-- Per channel breakdown -->
+    <div class="card" style="padding: 0;">
+      <div style="padding: 16px 20px; border-bottom: 1px solid var(--border);">
+        <h2 class="h3">By channel</h2>
+      </div>
+      <a href="channel-analytics.html" style="padding: 16px 20px; display: flex; gap: 16px; align-items: center; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #7E22CE, #EC4899); display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <p class="body" style="font-weight: 600; margin: 0;">Gold &amp; Silver News</p>
+          <p class="tertiary" style="font-size: 12px;">142 posts · 82.4k impressions · 4.2% engagement</p>
+        </div>
+        <span style="color: var(--success); font-weight: 700; font-size: 14px;">↑ 18%</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <a href="channel-analytics.html" style="padding: 16px 20px; display: flex; gap: 16px; align-items: center; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #F58529, #DD2A7B); display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <p class="body" style="font-weight: 600; margin: 0;">Crypto Markets</p>
+          <p class="tertiary" style="font-size: 12px;">186 posts · 104.2k impressions · 3.8% engagement</p>
+        </div>
+        <span style="color: var(--success); font-weight: 700; font-size: 14px;">↑ 32%</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <a href="channel-analytics.html" style="padding: 16px 20px; display: flex; gap: 16px; align-items: center; text-decoration: none; color: inherit;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #1A1A1A, #525252); display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <p class="body" style="font-weight: 600; margin: 0;">AI Industry</p>
+          <p class="tertiary" style="font-size: 12px;">80 posts · 31.6k impressions · 5.1% engagement</p>
+        </div>
+        <span style="color: var(--text-tertiary); font-weight: 700; font-size: 14px;">↑ 4%</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+</body>
+</html>

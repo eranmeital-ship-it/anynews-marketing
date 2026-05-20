@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<title>Dashboard — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+<style>
+  /* Full-width channel row */
+  .channel-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 32px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    transition: border-color 0.12s, transform 0.12s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .channel-row:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 1100px) {
+    .channel-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .channel-row .channel-recent { order: 99; }
+  }
+
+  .channel-identity {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    min-width: 0;
+  }
+  .channel-avatar {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    flex-shrink: 0;
+  }
+  .channel-stats {
+    display: flex;
+    gap: 28px;
+  }
+  .channel-stat .label {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .channel-stat .value {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 2px;
+    letter-spacing: -0.01em;
+  }
+  .channel-stat .value.success { color: var(--success); }
+
+  .channel-socials {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .social-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .social-icon.off {
+    background: var(--surface-hover) !important;
+    color: var(--text-tertiary);
+    opacity: 0.6;
+  }
+
+  .channel-recent {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .recent-thumb {
+    width: 48px; height: 60px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4C1D95, #7E22CE, #EC4899);
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .recent-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.5));
+  }
+  .recent-thumb.t2 { background: linear-gradient(135deg, #1e3a8a, #3b82f6, #06b6d4); }
+  .recent-thumb.t3 { background: linear-gradient(135deg, #581c87, #a855f7, #d946ef); }
+  .recent-thumb.t4 { background: linear-gradient(135deg, #831843, #db2777, #f472b6); }
+  .recent-thumb.t5 { background: linear-gradient(135deg, #14532d, #16a34a, #fbbf24); }
+  .recent-thumb.t6 { background: linear-gradient(135deg, #7c2d12, #ea580c, #fbbf24); }
+  .recent-thumb.t7 { background: linear-gradient(135deg, #0c4a6e, #0284c7, #67e8f9); }
+  .recent-thumb.t8 { background: linear-gradient(135deg, #1a1a1a, #525252, #d4d4d4); }
+
+  .channel-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .channel-badge.live {
+    background: var(--success-soft);
+    color: var(--success);
+  }
+  .channel-badge.review {
+    background: var(--warning-soft);
+    color: var(--warning);
+  }
+  .channel-badge .pulse {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-workspace" data-active="dashboard"></div>
+
+  <main class="app-main">
+    <!-- Header -->
+    <div class="app-header">
+      <div class="app-header-title">
+        <p class="label-up">Workspace</p>
+        <h1 class="h1 mt-1">Your channels</h1>
+        <p class="body muted mt-1">Three channels running. 142 posts published this week.</p>
+      </div>
+      <a href="new-channel.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        New channel
+      </a>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="grid grid-3 gap-4 mb-8">
+      <div class="card-gradient" style="padding: 24px; border-radius: 16px;">
+        <p style="font-size: 12px; opacity: 0.85; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px;">This week</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 0; letter-spacing: -0.02em;">142</p>
+        <p style="font-size: 13px; opacity: 0.9; margin: 4px 0 0;">Posts published</p>
+      </div>
+      <div class="card">
+        <p class="label-up">Signal Room</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 4px 0 0; letter-spacing: -0.02em;">47</p>
+        <p class="body muted" style="font-size: 13px;">Awaiting your review</p>
+      </div>
+      <div class="card">
+        <p class="label-up">News channels</p>
+        <p style="font-size: 36px; font-weight: 700; margin: 4px 0 0; letter-spacing: -0.02em;"><span id="ch-count">—</span> <span class="muted" style="font-size: 18px; font-weight: 500;">/ 5</span></p>
+        <p class="body muted" style="font-size: 13px;">On your Pro plan</p>
+      </div>
+    </div>
+
+    <!-- Channel filter strip -->
+    <div class="flex-between mb-4">
+      <h2 class="h2">All news channels</h2>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary btn-sm">All</button>
+        <button class="btn btn-ghost btn-sm">Active</button>
+        <button class="btn btn-ghost btn-sm">Paused</button>
+      </div>
+    </div>
+
+    <!-- Full-width channel rows -->
+    <div class="flex flex-col gap-3" id="channel-list">
+      <!-- Loading placeholder; replaced by JS -->
+    </div>
+
+    <!-- Recent activity -->
+    <div class="mt-12 mb-4 flex-between">
+      <h2 class="h2">Recent activity</h2>
+      <a href="#" class="body" style="color: var(--purple-700); font-weight: 500; font-size: 14px;">View all →</a>
+    </div>
+
+    <div class="card" style="padding: 0;">
+      <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+        <div class="flex gap-3" style="align-items: center;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></div>
+          <span class="body" style="font-weight: 500;">Published to X, Instagram, LinkedIn</span>
+          <span class="badge">Gold &amp; Silver News</span>
+        </div>
+        <span class="tertiary" style="font-size: 13px;">2m ago</span>
+      </div>
+      <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+        <div class="flex gap-3" style="align-items: center;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--purple-500);"></div>
+          <span class="body" style="font-weight: 500;">14 new signals captured</span>
+          <span class="badge">Crypto Markets</span>
+        </div>
+        <span class="tertiary" style="font-size: 13px;">8m ago</span>
+      </div>
+      <div class="flex-between" style="padding: 14px 20px; border-bottom: 1px solid var(--border);">
+        <div class="flex gap-3" style="align-items: center;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--warning);"></div>
+          <span class="body" style="font-weight: 500;">3 posts awaiting review</span>
+          <span class="badge">AI Industry</span>
+        </div>
+        <span class="tertiary" style="font-size: 13px;">22m ago</span>
+      </div>
+      <div class="flex-between" style="padding: 14px 20px;">
+        <div class="flex gap-3" style="align-items: center;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--success);"></div>
+          <span class="body" style="font-weight: 500;">Published to Pinterest</span>
+          <span class="badge">Gold &amp; Silver News</span>
+        </div>
+        <span class="tertiary" style="font-size: 13px;">1h ago</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+<script type="module">
+  import { listChannels } from '../assets/auth.js';
+
+  const GRADIENTS = [
+    'linear-gradient(135deg, #7E22CE, #EC4899)',
+    'linear-gradient(135deg, #F58529, #DD2A7B)',
+    'linear-gradient(135deg, #1A1A1A, #525252)',
+    'linear-gradient(135deg, #0EA5E9, #6366F1)',
+    'linear-gradient(135deg, #16A34A, #84CC16)',
+  ];
+  function esc(s){ return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+  function initial(s){ return (s || '?').trim().charAt(0).toUpperCase(); }
+  function gradFor(id){
+    let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    return GRADIENTS[h % GRADIENTS.length];
+  }
+  function badgeFor(status){
+    if (status === 'live') return '<span class="channel-badge live"><span class="pulse"></span>Live</span>';
+    if (status === 'review') return '<span class="channel-badge review"><span class="pulse"></span>Review</span>';
+    return '<span class="channel-badge">Draft</span>';
+  }
+  function rowHTML(ch){
+    const href = 'channel-signal-room.html?id=' + encodeURIComponent(ch.id);
+    const sub = ch.description ? esc(ch.description.split('\n')[0]).slice(0, 80) : 'No description yet';
+    return `
+      <a href="${href}" class="channel-row">
+        <div class="channel-identity">
+          <div class="channel-avatar" style="background: ${gradFor(ch.id)}; color:#fff; font-weight:700; font-size:16px; display:flex; align-items:center; justify-content:center;">${esc(initial(ch.name))}</div>
+          <div style="min-width: 0;">
+            <div class="flex gap-2 mb-1" style="align-items: center;">
+              <p class="body" style="font-weight: 600; margin: 0; font-size: 15px;">${esc(ch.name)}</p>
+              ${badgeFor(ch.status)}
+            </div>
+            <p class="tertiary" style="font-size: 12px; margin: 0;">${sub}</p>
+          </div>
+        </div>
+        <div class="channel-stats">
+          <div class="channel-stat"><p class="label">Today</p><p class="value">—</p></div>
+          <div class="channel-stat"><p class="label">This week</p><p class="value">—</p></div>
+          <div class="channel-stat"><p class="label">Avg score</p><p class="value">—</p></div>
+        </div>
+        <div class="channel-socials">
+          <div class="social-icon off"></div>
+          <div class="social-icon off"></div>
+          <div class="social-icon off"></div>
+          <div class="social-icon off"></div>
+          <div class="social-icon off"></div>
+        </div>
+        <div class="channel-recent"></div>
+      </a>`;
+  }
+  const addSlotHTML = `
+    <a href="new-channel.html" class="channel-row" style="border-style: dashed; justify-content: center; padding: 28px;">
+      <div class="flex gap-3" style="align-items: center; grid-column: 1 / -1; justify-content: center;">
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--surface-hover); display: flex; align-items: center; justify-content: center; color: var(--purple-700);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </div>
+        <p class="body" style="font-weight: 600; margin: 0;">Create new channel</p>
+      </div>
+    </a>`;
+  function emptyHTML(){
+    return `
+      <div class="card" style="padding: 48px 32px; text-align: center;">
+        <p class="body" style="font-weight: 600; font-size: 16px; margin: 0 0 8px;">No channels yet</p>
+        <p class="tertiary" style="font-size: 13px; margin: 0 0 20px;">Create your first channel to start collecting signals.</p>
+        <a href="new-channel.html" class="btn btn-primary" style="text-decoration: none;">Create your first channel</a>
+      </div>`;
+  }
+  (async () => {
+    const host = document.getElementById('channel-list');
+    const countEl = document.getElementById('ch-count');
+    try {
+      const channels = await listChannels();
+      countEl.textContent = String(channels.length);
+      if (!channels.length) {
+        host.innerHTML = emptyHTML();
+      } else {
+        host.innerHTML = channels.map(rowHTML).join('') + addSlotHTML;
+      }
+    } catch (e) {
+      host.innerHTML = `<div class="card" style="padding: 24px; text-align: center;"><p class="tertiary">${esc(e?.message || 'Failed to load channels.')}</p></div>`;
+    }
+  })();
+</script>
+</body>
+</html>

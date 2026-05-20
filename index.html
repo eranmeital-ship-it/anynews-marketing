@@ -1,0 +1,1497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>AnyNews.ai — Velocity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* ════════ VELOCITY — kinetic, energetic SaaS ════════
+   Bold gradient energy, animated reveals, an interactive
+   horizontal-scroll moment — but a credible, conventional SaaS site. */
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --bg:#FCFBFE;
+  --bg-2:#F4F2F9;
+  --surf:#FFFFFF;
+  --surf-s:#FFFFFF;
+  --line:#E9E6F0;
+  --line-2:#DBD7E6;
+  --tx:#171221;
+  --tx-2:#5E5870;
+  --tx-3:#9590A4;
+  --v1:#5B21B6;
+  --v2:#7C3AED;
+  --v3:#A78BFA;
+  --lime:#6D28D9;
+  --green:#16A34A;
+  --green-soft:#DCFCE7;
+  --grad:linear-gradient(100deg,#5B21B6,#7C3AED 55%,#C026D3);
+  --grad-2:linear-gradient(100deg,#6D28D9,#C026D3);
+  --disp:'Inter',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+html{ scroll-behavior:smooth; }
+body{ background:var(--bg); font-family:var(--body); color:var(--tx); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a{ color:inherit; text-decoration:none; }
+::selection{ background:#7C3AED; color:#fff; }
+
+.bound{ max-width:1280px; margin:0 auto; padding:0 40px; }
+@media(max-width:680px){ .bound{ padding:0 20px; } }
+
+/* aurora atmosphere — soft tints for light canvas */
+.aura{ position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.aura span{ position:absolute; border-radius:50%; filter:blur(110px); }
+.aura .a1{ width:620px; height:620px; background:rgba(91,33,182,0.14); top:-260px; left:-180px; }
+.aura .a2{ width:520px; height:520px; background:rgba(124,58,237,0.1); top:34%; right:-240px; }
+.aura .a3{ width:480px; height:480px; background:rgba(167,139,250,0.12); bottom:-200px; left:30%; }
+.shell{ position:relative; z-index:2; }
+
+/* progress bar */
+.prog{ position:fixed; top:0; left:0; height:3px; background:var(--grad); z-index:101; width:0%; }
+
+/* ─── nav ─── */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; padding:18px 40px;
+  backdrop-filter:blur(16px); background:rgba(252,251,254,0.8); border-bottom:1px solid var(--line);
+}
+@media(max-width:680px){ .nav{ padding:14px 20px; } }
+.logo{ font-family:var(--disp); font-weight:700; font-size:20px; letter-spacing:-0.02em; display:flex; align-items:center; gap:9px; }
+.logo .logo-mark{ width:28px; height:28px; }
+.logo .logo-mark svg{ width:100%; height:100%; }
+.logo .ai{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.nav-links{ margin-left:46px; display:flex; gap:28px; }
+.nav-links a{ font-size:14px; color:var(--tx-2); transition:color .15s; }
+.nav-links a:hover{ color:var(--tx); }
+.nav-right{ margin-left:auto; display:flex; align-items:center; gap:20px; }
+.nav-right .si{ font-size:14px; color:var(--tx-2); }
+.btn-pill{
+  font-weight:600; font-size:14px; background:var(--grad); color:#fff;
+  padding:11px 22px; border-radius:99px; box-shadow:0 8px 26px -8px rgba(124,92,255,0.7);
+  transition:transform .14s;
+}
+.btn-pill:hover{ transform:translateY(-2px); }
+@media(max-width:780px){ .nav-links{ display:none; } }
+
+/* ─── hero ─── */
+.hero{ padding:170px 0 110px; text-align:center; position:relative; }
+.hero-flag{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; color:var(--tx-2); padding:8px 8px 8px 16px;
+  border:1px solid var(--line); border-radius:99px; background:var(--surf); box-shadow:0 4px 16px -8px rgba(124,92,255,0.18);
+  margin-bottom:34px;
+}
+.hero-flag .pp{ width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 10px var(--lime); animation:bp 1.5s infinite; }
+@keyframes bp{ 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero-flag .chip{ background:var(--grad); color:#fff; font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; }
+.hero h1{
+  font-family:var(--disp); font-weight:800; font-size:clamp(36px,6.2vw,80px);
+  line-height:1.03; letter-spacing:-0.04em; margin:0 auto 26px; max-width:21ch;
+}
+.hero h1 .flow{
+  background:var(--grad); background-size:220% auto;
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  animation:flow 6s linear infinite;
+}
+@keyframes flow{ to{ background-position:220% center; } }
+.hero-lede{ font-size:clamp(16px,1.7vw,21px); color:var(--tx-2); line-height:1.6; max-width:825px; margin:0 auto 38px; }
+.hero-cta{ display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap; }
+.btn-big{
+  font-weight:600; font-size:16px; background:var(--grad); color:#fff;
+  padding:17px 32px; border-radius:14px; box-shadow:0 16px 44px -12px rgba(124,92,255,0.7);
+  transition:transform .14s,box-shadow .14s; display:inline-flex; align-items:center; gap:10px;
+}
+.btn-big:hover{ transform:translateY(-3px); box-shadow:0 22px 56px -12px rgba(255,77,141,0.65); }
+.btn-out{
+  font-weight:500; font-size:16px; border:1px solid var(--line-2); color:var(--tx);
+  padding:17px 30px; border-radius:14px; background:var(--surf); box-shadow:0 4px 14px -8px rgba(23,18,33,0.1);
+  transition:border-color .15s,background .15s; display:inline-flex; align-items:center; gap:10px;
+}
+.btn-out:hover{ border-color:var(--v1); background:var(--bg-2); }
+.ribbon{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:66px; border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+@media(max-width:680px){ .ribbon{ grid-template-columns:1fr 1fr; } }
+.ribbon-cell{ padding:26px 18px; border-right:1px solid var(--line); }
+.ribbon-cell:last-child{ border-right:0; }
+@media(max-width:680px){ .ribbon-cell:nth-child(2n){ border-right:0; } .ribbon-cell:nth-child(-n+2){ border-bottom:1px solid var(--line); } }
+.ribbon-cell .rv2{ font-family:var(--disp); font-weight:700; font-size:34px; letter-spacing:-0.02em; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.ribbon-cell .rl{ font-size:12.5px; color:var(--tx-3); margin-top:5px; }
+
+/* ─── section frame ─── */
+.sec{ padding:108px 0; position:relative; }
+.sec-top{ text-align:center; max-width:680px; margin:0 auto 56px; }
+.ktag{
+  display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:600;
+  color:var(--v2); margin-bottom:16px;
+}
+.ktag::before,.ktag::after{ content:''; width:24px; height:2px; background:var(--grad); }
+.kh2{
+  font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.4vw,54px);
+  line-height:1.07; letter-spacing:-0.035em; margin-bottom:16px;
+}
+.kh2 .g{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.ksub{ font-size:clamp(15px,1.6vw,18px); color:var(--tx-2); line-height:1.6; }
+
+/* ─── pipeline : 3 steps with connecting flow ─── */
+.flow3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; position:relative; }
+@media(max-width:820px){ .flow3{ grid-template-columns:1fr; } }
+.flow-step{
+  padding:32px 28px; border:1px solid var(--line); border-radius:20px;
+  background:var(--surf); position:relative;
+  box-shadow:0 14px 40px -22px rgba(23,18,33,0.22);
+}
+.flow-step .fnum{
+  font-family:var(--disp); font-weight:700; font-size:14px;
+  width:38px; height:38px; border-radius:11px; background:var(--grad); color:#fff;
+  display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+}
+.flow-step .ftime{ font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--lime); margin-bottom:8px; }
+.flow-step h3{ font-family:var(--disp); font-weight:600; font-size:22px; letter-spacing:-0.01em; margin-bottom:9px; }
+.flow-step p{ font-size:14.5px; color:var(--tx-2); line-height:1.62; }
+.flow-step .prog-line{ height:3px; background:var(--line); border-radius:99px; margin-top:20px; overflow:hidden; }
+.flow-step .prog-line::after{ content:''; display:block; height:100%; width:35%; background:var(--grad); animation:run 2.6s ease-in-out infinite; }
+.flow-step:nth-child(2) .prog-line::after{ animation-delay:.45s; }
+.flow-step:nth-child(3) .prog-line::after{ animation-delay:.9s; }
+@keyframes run{ 0%{ margin-left:-35%; } 60%,100%{ margin-left:100%; } }
+
+/* ─── LIVE DEMO — signal → 3 cards → networks ─── */
+.kdemo{
+  max-width:960px; margin:0 auto; border:1px solid var(--line); border-radius:24px;
+  background:var(--surf); overflow:hidden; box-shadow:0 30px 80px -36px rgba(91,33,182,0.3);
+}
+.kd-bar{
+  display:flex; align-items:center; gap:11px; padding:16px 22px;
+  border-bottom:1px solid var(--line); background:var(--bg-2);
+}
+.kd-bar .kdt{ font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:-0.01em; }
+.kd-bar .kdt .ai{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.kd-bar .kdph{ margin-left:auto; display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--tx-3); }
+.kd-bar .kdph b{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.kd-bar .kdpulse{ width:8px; height:8px; border-radius:50%; background:var(--v2); box-shadow:0 0 9px var(--v2); animation:bp 1.5s infinite; }
+
+/* the diagram canvas */
+.kd-canvas{ position:relative; padding:28px 26px 32px; }
+@media(max-width:600px){ .kd-canvas{ padding:22px 13px 26px; } }
+/* SVG wire layer sits behind the nodes */
+.kd-wires{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+.kd-wire{ fill:none; stroke:var(--line-2); stroke-width:2; stroke-dasharray:4 5; stroke-linecap:round; }
+.kd-wire.lit{ stroke:var(--v3); }
+.kd-wire-glow{
+  fill:none; stroke:url(#kgrad); stroke-width:2.5; stroke-linecap:round;
+  stroke-dasharray:1; stroke-dashoffset:1; opacity:0;
+  transition:stroke-dashoffset .5s ease,opacity .3s;
+}
+.kd-wire-glow.draw{ opacity:1; stroke-dashoffset:0; }
+.kd-spark{ opacity:0; }
+
+.kd-tier{ position:relative; z-index:2; }
+.kd-tierhead{ display:flex; align-items:center; gap:9px; margin-bottom:12px; }
+.kd-tierhead .kt-step{
+  width:26px; height:26px; border-radius:8px; background:var(--bg-2); color:var(--tx-3);
+  font-weight:700; font-size:12px; display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; transition:all .3s;
+}
+.kd-tierhead.act .kt-step{ background:var(--grad-2); color:#fff; }
+.kd-tierhead .kt-lbl{ font-weight:700; font-size:13px; letter-spacing:-0.01em; color:var(--tx-2); transition:color .3s; }
+.kd-tierhead.act .kt-lbl{ color:var(--tx); }
+.kd-tierhead .kt-tm{ margin-left:auto; font-size:11px; font-weight:600; color:var(--tx-3); }
+
+/* signals — 8 in two rows, compact */
+.kd-sigs{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+@media(max-width:680px){ .kd-sigs{ grid-template-columns:repeat(2,1fr); } }
+.ksig{
+  display:flex; flex-direction:column; gap:4px; padding:9px 11px;
+  border:1px solid var(--line); border-radius:11px; background:var(--bg-2);
+  opacity:0; transform:translateY(8px) scale(.97);
+  transition:opacity .35s ease,transform .35s ease,border-color .35s,background .35s,box-shadow .35s;
+}
+.ksig.show{ opacity:1; transform:none; }
+.ksig .ks-top{ display:flex; align-items:center; gap:6px; }
+.ksig .kdot{ width:6px; height:6px; border-radius:50%; background:var(--tx-3); flex-shrink:0; transition:all .35s; }
+.ksig .ksrc{ font-size:9px; font-weight:800; letter-spacing:0.04em; color:var(--tx-3); }
+.ksig .ksc{ margin-left:auto; font-size:10px; font-weight:800; color:var(--tx-3); transition:color .3s; }
+.ksig .ktxt{ font-size:11px; color:var(--tx-2); line-height:1.3; transition:color .3s;
+  display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+.ksig.picked{
+  border-color:var(--v2); background:#fff;
+  box-shadow:0 0 0 4px rgba(124,58,237,0.1),0 14px 30px -16px rgba(91,33,182,0.4);
+}
+.ksig.picked .kdot{ background:var(--v2); box-shadow:0 0 9px var(--v2); }
+.ksig.picked .ktxt{ color:var(--tx); font-weight:600; }
+.ksig.picked .ksc{ color:var(--v2); }
+.ksig.dimmed{ opacity:0.38; }
+.ksig .ks-pick{
+  font-size:8px; font-weight:800; letter-spacing:0.06em; color:#fff;
+  background:var(--grad-2); border-radius:4px; padding:2px 6px; align-self:flex-start;
+  opacity:0; transform:translateY(-3px); transition:opacity .3s,transform .3s; margin-top:1px;
+}
+.ksig.picked .ks-pick{ opacity:1; transform:none; }
+
+/* spacer rows that give wires room */
+.kd-gap-a{ height:42px; }
+.kd-gap-b{ height:58px; }
+
+/* TIER 2 — three cards in a row */
+.kd-cards{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  max-width:660px; margin:0 auto; align-items:start;
+}
+@media(max-width:600px){ .kd-cards{ grid-template-columns:1fr; gap:14px; max-width:240px; } }
+.kd-cardwrap{ display:flex; flex-direction:column; align-items:center; }
+.kd-card{
+  width:100%; max-width:200px; aspect-ratio:4/5; border-radius:14px; overflow:hidden; position:relative;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  box-shadow:0 22px 46px -18px rgba(23,18,33,0.4);
+  transform:translateY(14px) scale(.92); opacity:0;
+  transition:transform .55s cubic-bezier(.2,.9,.25,1),opacity .5s,box-shadow .5s;
+}
+.kd-card.in{ transform:translateY(0) scale(1); opacity:1; }
+.kd-card.done{ box-shadow:0 26px 54px -16px rgba(124,58,237,0.42); }
+.kd-card .kcbg{ position:absolute; inset:0; background-size:cover; background-position:center; }
+.kd-card .kcscrim{ position:absolute; inset:0; background:linear-gradient(to top,rgba(15,10,25,0.94),transparent 58%); }
+.kd-card .kcbody{ position:relative; z-index:2; padding:13px; }
+.kd-card .kckick{ display:inline-block; font-size:8px; font-weight:800; letter-spacing:0.1em; color:#fff; background:var(--grad-2); padding:3px 7px; border-radius:4px; margin-bottom:7px; }
+.kd-card .kchead{ font-family:var(--disp); font-weight:800; font-size:13.5px; line-height:1.16; letter-spacing:-0.02em; color:#fff; }
+.kd-card .kcfoot{ margin-top:8px; display:inline-block; font-size:7px; color:rgba(255,255,255,0.72); border-top:1px solid rgba(255,255,255,0.3); padding-top:4px; }
+.kd-cardtag{
+  margin-top:9px; font-size:9px; font-weight:800; letter-spacing:0.05em; color:var(--tx-3);
+  transition:color .3s; text-align:center;
+}
+.kd-card.done + .kd-cardtag{ color:var(--v2); }
+
+/* TIER 3 — networks */
+.kd-nets{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+@media(max-width:680px){ .kd-nets{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:430px){ .kd-nets{ grid-template-columns:1fr; } }
+.knet{
+  display:flex; flex-direction:column; align-items:center; gap:9px; padding:15px 10px;
+  border:2px solid var(--line); border-radius:14px; background:var(--bg-2);
+  position:relative;
+  transition:border-color .9s ease,background .9s ease,transform .35s ease,box-shadow .9s ease;
+}
+.knet .kn-ico{
+  width:38px; height:38px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+  background:#fff; border:1px solid var(--line); color:var(--tx-3);
+  transition:all .9s ease;
+}
+.knet .kn-name{ font-size:12px; font-weight:700; color:var(--tx-2); }
+.knet .kn-stat{
+  font-size:9px; font-weight:800; letter-spacing:0.05em; color:var(--tx-3);
+  display:flex; align-items:center; gap:4px; transition:color .3s;
+}
+.knet .kn-count{ color:var(--v2); }
+/* lime-green flash on each hit, then fades back via the long transition above */
+.knet.flash{
+  border-color:#65D11A; background:#F1FDE3;
+  transform:translateY(-3px) scale(1.045);
+  box-shadow:0 16px 32px -16px rgba(101,209,26,0.55);
+  transition:border-color .12s ease,background .12s ease,transform .3s cubic-bezier(.2,1.5,.4,1),box-shadow .12s ease;
+}
+.knet.flash .kn-ico{
+  background:#65D11A; color:#fff; border-color:#65D11A;
+  transition:all .12s ease;
+}
+/* ripple ring */
+.knet .kn-ring{
+  position:absolute; top:15px; left:50%; margin-left:-19px;
+  width:38px; height:38px; border-radius:50%;
+  border:2px solid #65D11A; opacity:0; pointer-events:none;
+}
+.knet.flash .kn-ring{ animation:ring .6s ease-out; }
+@keyframes ring{
+  0%{ opacity:0.75; transform:scale(0.6); }
+  100%{ opacity:0; transform:scale(2.3); }
+}
+/* fully-published state (all 3 received) — subtle violet confirm */
+.knet.done .kn-ico{ background:var(--grad-2); color:#fff; border-color:transparent; }
+.knet.done .kn-name{ color:var(--tx); }
+
+.kd-foot{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding:15px 22px; border-top:1px solid var(--line); background:var(--bg-2);
+  font-size:12px; color:var(--tx-3);
+}
+.kd-foot b{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-weight:800; }
+
+/* ─── roles : offset cards ─── */
+.role-stack{ display:flex; flex-direction:column; gap:18px; max-width:980px; margin:0 auto; }
+.role-big{
+  display:grid; grid-template-columns:72px 1fr 1.05fr; gap:32px; align-items:center;
+  padding:34px; border:1px solid var(--line); border-radius:22px;
+  background:var(--surf);
+  box-shadow:0 14px 40px -24px rgba(23,18,33,0.2);
+  transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.role-big:hover{ transform:translateX(8px); border-color:rgba(124,92,255,0.45); box-shadow:0 22px 50px -22px rgba(124,92,255,0.3); }
+@media(max-width:860px){ .role-big{ grid-template-columns:1fr; gap:14px; padding:26px; } }
+.role-big .rnum{ font-family:var(--disp); font-weight:700; font-size:48px; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:0.8; }
+.role-big .rmid h3{ font-family:var(--disp); font-weight:600; font-size:25px; letter-spacing:-0.02em; margin-bottom:5px; }
+.role-big .rmid .rt{ font-size:13px; color:var(--lime); font-weight:600; }
+.role-big .rdesc{ font-size:14.5px; color:var(--tx-2); line-height:1.6; }
+.role-big .rdesc .rl{ display:flex; gap:7px; flex-wrap:wrap; margin-top:12px; }
+.role-big .rdesc .rl span{ font-size:11px; color:var(--tx-3); border:1px solid var(--line); border-radius:99px; padding:4px 11px; }
+
+/* ─── replaces : versus ─── */
+.versus{ display:grid; grid-template-columns:1fr 60px 1fr; gap:0; align-items:stretch; max-width:980px; margin:0 auto; }
+@media(max-width:780px){ .versus{ grid-template-columns:1fr; } }
+.vs-side{ padding:34px; border:1px solid var(--line); border-radius:22px; }
+.vs-old{ background:var(--surf); box-shadow:0 12px 36px -28px rgba(23,18,33,0.18); }
+.vs-new{ background:linear-gradient(150deg,rgba(124,92,255,0.15),var(--surf-s)); border-color:rgba(124,92,255,0.36); }
+.vs-mid{ display:flex; align-items:center; justify-content:center; }
+.vs-mid span{ font-family:var(--disp); font-weight:700; font-size:17px; width:50px; height:50px; border-radius:50%; background:var(--grad); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 30px -8px rgba(124,92,255,0.6); }
+@media(max-width:780px){ .vs-mid{ padding:12px 0; } }
+.vs-side .vl{ font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--tx-3); margin-bottom:5px; }
+.vs-new .vl{ color:var(--v2); }
+.vs-side h3{ font-family:var(--disp); font-weight:600; font-size:23px; margin-bottom:18px; }
+.vs-item{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px; }
+.vs-item:last-of-type{ border-bottom:0; }
+.vs-item .ic{ width:22px; height:22px; border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; }
+.vs-old .ic{ background:rgba(255,77,141,0.14); color:var(--v2); }
+.vs-new .ic{ background:var(--grad); color:#fff; }
+.vs-item .vt{ flex:1; color:var(--tx-2); }
+.vs-new .vs-item .vt{ color:var(--tx); }
+.vs-item .vc{ font-size:12px; color:var(--tx-3); }
+.vs-foot{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:13px; font-weight:600; }
+.vs-old .vs-foot{ color:var(--tx-3); }
+.vs-new .vs-foot{ color:var(--lime); }
+
+/* ─── card showcase : tilted ─── */
+.tilt-rail{ display:flex; gap:22px; max-width:1000px; margin:0 auto; }
+.tilt-card{
+  flex:1; border-radius:20px; overflow:hidden; aspect-ratio:4/5; position:relative;
+  background-size:cover; background-position:center;
+  box-shadow:0 30px 70px -24px rgba(0,0,0,0.8); transition:transform .35s;
+}
+.tilt-card:nth-child(1){ transform:rotate(-3deg) translateY(12px); }
+.tilt-card:nth-child(2){ transform:scale(1.05); z-index:2; }
+.tilt-card:nth-child(3){ transform:rotate(3deg) translateY(12px); }
+.tilt-card:hover{ transform:rotate(0) scale(1.07); z-index:3; }
+.tilt-card::after{ content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.94),transparent 56%); }
+.tilt-cap{ position:absolute; left:0; right:0; bottom:0; padding:22px; z-index:2; }
+.tilt-kick{ font-size:10px; font-weight:700; letter-spacing:0.12em; color:var(--lime); display:block; margin-bottom:8px; }
+.tilt-head{ font-family:var(--disp); font-weight:600; font-size:21px; line-height:1.1; }
+@media(max-width:780px){ .tilt-rail{ flex-direction:column; } .tilt-card{ transform:none!important; } }
+
+/* ─── card showcase : moving gallery ─── */
+.gal-wrap{ margin-top:0; position:relative; }
+.gal-track{
+  display:flex; gap:18px; width:max-content;
+  animation:galslide 56s linear infinite;
+}
+.gal-wrap:hover .gal-track{ animation-play-state:paused; }
+@keyframes galslide{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+.gal-row2 .gal-track{ animation-duration:68s; animation-direction:reverse; }
+.gal-row2{ margin-top:18px; }
+.gcard{
+  flex:0 0 232px; aspect-ratio:4/5; border-radius:16px; overflow:hidden; position:relative;
+  background-size:cover; background-position:center;
+  box-shadow:0 16px 38px -22px rgba(23,18,33,0.5);
+}
+.gcard::after{ content:''; position:absolute; inset:0; }
+/* template A — bottom gradient, kicker pill */
+.gcard.tA::after{ background:linear-gradient(to top,rgba(13,8,24,0.95),transparent 58%); }
+.gcard.tA .gc-body{ position:absolute; left:0; right:0; bottom:0; padding:16px; z-index:2; }
+.gcard.tA .gc-kick{ display:inline-block; font-size:8px; font-weight:800; letter-spacing:0.1em; color:#fff; background:var(--grad-2); padding:3px 8px; border-radius:4px; margin-bottom:8px; }
+.gcard.tA .gc-head{ font-family:var(--disp); font-weight:800; font-size:16px; line-height:1.14; letter-spacing:-0.02em; color:#fff; }
+/* template B — solid band at bottom */
+.gcard.tB::after{ background:linear-gradient(to top,rgba(13,8,24,0.45),transparent 50%); }
+.gcard.tB .gc-body{ position:absolute; left:0; right:0; bottom:0; padding:14px; z-index:2; background:rgba(255,255,255,0.96); }
+.gcard.tB .gc-kick{ font-size:8px; font-weight:800; letter-spacing:0.1em; color:var(--v2); display:block; margin-bottom:5px; }
+.gcard.tB .gc-head{ font-family:var(--disp); font-weight:800; font-size:15px; line-height:1.15; letter-spacing:-0.02em; color:var(--tx); }
+/* template C — top accent bar, centered */
+.gcard.tC::after{ background:linear-gradient(160deg,rgba(91,33,182,0.78),rgba(124,58,237,0.62)); }
+.gcard.tC .gc-body{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:20px; z-index:2; text-align:center; }
+.gcard.tC .gc-kick{ font-size:8px; font-weight:800; letter-spacing:0.14em; color:#fff; opacity:0.8; margin-bottom:10px; }
+.gcard.tC .gc-head{ font-family:var(--disp); font-weight:800; font-size:18px; line-height:1.16; letter-spacing:-0.02em; color:#fff; }
+.gcard.tC .gc-rule{ width:32px; height:3px; background:#fff; border-radius:2px; margin:11px auto 0; opacity:0.85; }
+.gc-tpl{
+  position:absolute; top:9px; right:9px; z-index:3;
+  font-size:7px; font-weight:800; letter-spacing:0.08em;
+  color:#fff; background:rgba(0,0,0,0.4); padding:3px 6px; border-radius:4px;
+}
+.gcard.tB .gc-tpl{ background:rgba(124,58,237,0.9); }
+.gcard.tQ .gc-tpl{ background:rgba(22,163,74,0.85); }
+.gcard.tP .gc-tpl{ background:rgba(219,39,119,0.85); }
+
+/* template Q — quote card (solid bg, large quote, attribution) */
+.gcard.tQ::after{ background:var(--grad); opacity:0.92; }
+.gcard.tQ .gc-body{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+  padding:22px 20px; z-index:2;
+}
+.gcard.tQ .gc-quote-mark{
+  font-size:52px; line-height:0.6; font-weight:900; color:rgba(255,255,255,0.3); font-family:Georgia,serif;
+}
+.gcard.tQ .gc-head{
+  font-family:var(--disp); font-weight:700; font-size:15px; line-height:1.28; letter-spacing:-0.01em;
+  color:#fff; margin-top:8px; font-style:italic;
+}
+.gcard.tQ .gc-attr{
+  margin-top:auto; padding-top:12px; font-size:9px; font-weight:700; letter-spacing:0.06em;
+  color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.2);
+}
+
+/* template P — PIP (small inset image over the card, news ticker feel) */
+.gcard.tP::after{ background:linear-gradient(to top,rgba(13,8,24,0.96),rgba(13,8,24,0.4) 60%); }
+.gcard.tP .gc-body{
+  position:absolute; inset:0; display:flex; flex-direction:column; padding:14px; z-index:2;
+}
+.gcard.tP .gc-pip{
+  width:60px; height:60px; border-radius:10px; background-size:cover; background-position:center;
+  border:2px solid rgba(255,255,255,0.3); box-shadow:0 8px 20px -8px rgba(0,0,0,0.6);
+  margin-bottom:auto;
+}
+.gcard.tP .gc-pip-bar{
+  display:flex; align-items:center; gap:5px; margin-bottom:8px;
+}
+.gcard.tP .gc-pip-live{
+  font-size:7px; font-weight:800; letter-spacing:0.08em; color:#fff;
+  background:#E11D48; padding:2px 6px; border-radius:3px;
+}
+.gcard.tP .gc-pip-src{
+  font-size:7px; font-weight:700; letter-spacing:0.06em; color:rgba(255,255,255,0.6);
+}
+.gcard.tP .gc-head{
+  font-family:var(--disp); font-weight:800; font-size:16px; line-height:1.16; letter-spacing:-0.02em;
+  color:#fff;
+}
+.gcard.tP .gc-pip-foot{
+  margin-top:8px; font-size:8px; color:rgba(255,255,255,0.6);
+  border-top:1px solid rgba(255,255,255,0.2); padding-top:6px;
+}
+.gal-legend{
+  display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  margin-top:26px; font-size:12px; color:var(--tx-3);
+}
+.gal-legend span{ display:flex; align-items:center; gap:6px; }
+.gal-legend i{ width:9px; height:9px; border-radius:3px; display:inline-block; }
+
+/* ─── first to report : animated bars ─── */
+.race-k{ display:grid; grid-template-columns:1fr 1.15fr; gap:54px; align-items:center; }
+@media(max-width:880px){ .race-k{ grid-template-columns:1fr; gap:32px; } }
+.race-k .rk-h{ font-family:var(--disp); font-weight:700; font-size:clamp(28px,3.4vw,46px); line-height:1.02; letter-spacing:-0.03em; margin-bottom:16px; }
+.race-k .rk-h .g{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.race-k p{ font-size:15.5px; color:var(--tx-2); line-height:1.62; }
+.race-k .feat{ list-style:none; margin-top:20px; display:flex; flex-direction:column; gap:12px; }
+.race-k .feat li{ display:flex; gap:11px; font-size:14.5px; color:var(--tx-2); }
+.race-k .feat li b{ color:var(--tx); }
+.race-k .feat li .pl{ color:var(--lime); font-weight:700; }
+.bars{ border:1px solid var(--line); border-radius:20px; padding:28px; background:var(--surf); box-shadow:0 14px 40px -24px rgba(23,18,33,0.2); }
+.bar-row{ margin-bottom:20px; }
+.bar-row:last-child{ margin-bottom:0; }
+.bar-row .bl{ display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:9px; }
+.bar-row .bl .bn{ font-weight:600; }
+.bar-row.win .bl .bn{ color:var(--lime); }
+.bar-row .bl .bt{ font-family:var(--disp); font-weight:600; color:var(--tx-3); }
+.bar-row.win .bl .bt{ color:var(--lime); }
+.bar-track{ height:13px; border-radius:99px; background:var(--bg-2); overflow:hidden; }
+.bar-fill{ height:100%; border-radius:99px; background:var(--line-2); width:0; transition:width 1.2s cubic-bezier(.2,.7,.2,1); }
+.bar-row.win .bar-fill{ background:var(--grad); box-shadow:0 0 16px rgba(124,92,255,0.55); }
+.bars.go .bar-fill{ width:var(--w); }
+
+/* ─── platform : 5-up grid, no scroll ─── */
+.pgrid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+@media(max-width:1000px){ .pgrid{ grid-template-columns:repeat(3,1fr); } }
+@media(max-width:680px){ .pgrid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:460px){ .pgrid{ grid-template-columns:1fr; } }
+.pcard{
+  border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--surf);
+  box-shadow:0 12px 36px -26px rgba(23,18,33,0.22);
+  display:flex; flex-direction:column;
+  transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.pcard:hover{ transform:translateY(-6px); border-color:rgba(124,58,237,0.4); box-shadow:0 22px 46px -22px rgba(91,33,182,0.3); }
+/* header */
+.pc-top{ display:flex; align-items:center; gap:9px; padding:14px 15px 12px; }
+.pc-logo{ width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0; }
+.pc-name{ font-family:var(--disp); font-weight:700; font-size:14px; letter-spacing:-0.01em; }
+.pc-ratio{ margin-left:auto; font-size:10px; font-weight:700; color:var(--v2); background:var(--bg-2); border-radius:6px; padding:3px 7px; }
+/* preview image — fixed-height stage, card sized by its true ratio */
+.pc-preview{ padding:14px 15px 4px; height:248px; display:flex; align-items:center; justify-content:center; }
+.pc-img{
+  border-radius:12px; overflow:hidden; position:relative; height:100%;
+  background-size:cover; background-position:center;
+}
+.pc-img.r45{ aspect-ratio:4/5; }
+.pc-img.r11{ aspect-ratio:1/1; }
+.pc-img.r23{ aspect-ratio:2/3; }
+.pc-img.r169{ aspect-ratio:16/9; height:auto; width:100%; }
+.pc-img::after{ content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(13,8,24,0.92),rgba(13,8,24,0.1) 62%); }
+.pc-cap{ position:absolute; left:0; right:0; bottom:0; padding:13px; z-index:2; }
+.pc-kick{ display:inline-block; font-size:8px; font-weight:800; letter-spacing:0.1em; color:#fff; background:var(--grad-2); padding:3px 7px; border-radius:4px; margin-bottom:7px; }
+.pc-headline{ font-family:var(--disp); font-weight:800; font-size:14px; line-height:1.14; letter-spacing:-0.02em; color:#fff; }
+.pc-headline .hl{ color:var(--v3); }
+.pc-by{ margin-top:7px; font-size:8px; color:rgba(255,255,255,0.7); border-top:1px solid rgba(255,255,255,0.3); padding-top:5px; display:inline-block; }
+/* spec list */
+.pc-spec{ padding:14px 15px 16px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.pc-spec .ps-row{ display:flex; align-items:baseline; gap:8px; font-size:11px; line-height:1.4; }
+.pc-spec .ps-k{ color:var(--tx-3); font-weight:600; flex-shrink:0; width:46px; }
+.pc-spec .ps-v{ color:var(--tx-2); }
+.pc-spec .ps-v b{ color:var(--tx); font-weight:700; }
+.pc-tip{
+  margin-top:auto; padding-top:11px; border-top:1px dashed var(--line);
+  font-size:11px; color:var(--tx-2); line-height:1.45;
+}
+.pc-tip b{ color:var(--v2); font-weight:700; }
+
+/* ─── verticals : magnetic grid ─── */
+.mag-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media(max-width:920px){ .mag-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .mag-grid{ grid-template-columns:1fr; } }
+.mag{ padding:28px 26px; border:1px solid var(--line); border-radius:20px; background:var(--surf); position:relative; overflow:hidden; box-shadow:0 12px 36px -24px rgba(23,18,33,0.2); transition:transform .22s,border-color .22s,box-shadow .22s; }
+.mag:hover{ transform:translateY(-7px); border-color:rgba(124,92,255,0.45); box-shadow:0 24px 50px -22px rgba(124,92,255,0.28); }
+.mag::before{ content:''; position:absolute; top:-40px; right:-40px; width:130px; height:130px; border-radius:50%; background:var(--grad); opacity:0.15; filter:blur(22px); }
+.mag .mbadge{ font-size:10px; font-weight:700; letter-spacing:0.1em; color:var(--lime); margin-bottom:14px; display:inline-block; }
+.mag .mglyph{ width:46px; height:46px; border-radius:12px; background:var(--grad); display:flex; align-items:center; justify-content:center; color:#fff; margin-bottom:16px; }
+.mag h3{ font-family:var(--disp); font-weight:600; font-size:20px; letter-spacing:-0.01em; margin-bottom:8px; }
+.mag p{ font-size:13.5px; color:var(--tx-2); line-height:1.58; margin-bottom:14px; }
+.mag .mtags{ display:flex; flex-wrap:wrap; gap:6px; }
+.mag .mtags span{ font-size:11px; color:var(--tx-2); background:var(--bg-2); border:1px solid var(--line); border-radius:99px; padding:4px 10px; }
+
+/* ─── metrics ─── */
+.mega{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+@media(max-width:760px){ .mega{ grid-template-columns:1fr 1fr; } }
+.mega-cell{ text-align:center; padding:42px 20px; border:1px solid var(--line); border-radius:20px; background:var(--surf); box-shadow:0 12px 36px -26px rgba(23,18,33,0.2); }
+.mega-cell .mv{ font-family:var(--disp); font-weight:700; font-size:clamp(46px,5vw,66px); line-height:0.85; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.mega-cell .ml{ font-size:13px; color:var(--tx-2); margin-top:14px; }
+
+/* ─── modes ─── */
+.mode-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media(max-width:820px){ .mode-row{ grid-template-columns:1fr; } }
+.mode-k{ padding:32px; border:1px solid var(--line); border-radius:20px; background:var(--surf); box-shadow:0 12px 36px -26px rgba(23,18,33,0.2); }
+.mode-k.feat{ background:linear-gradient(150deg,rgba(124,92,255,0.16),var(--surf-s)); border-color:rgba(124,92,255,0.4); }
+.mode-k .mk-tag{ font-size:11px; font-weight:700; letter-spacing:0.1em; color:var(--tx-3); margin-bottom:14px; }
+.mode-k.feat .mk-tag{ color:var(--v2); }
+.mode-k h3{ font-family:var(--disp); font-weight:600; font-size:23px; margin-bottom:9px; }
+.mode-k p{ font-size:14.5px; color:var(--tx-2); line-height:1.62; }
+
+/* ─── CTA ─── */
+.cta-k{ padding:120px 0; text-align:center; position:relative; }
+.cta-card{
+  border-radius:30px; padding:80px 48px;
+  background:linear-gradient(135deg,#5B21B6,#7C3AED 55%,#C026D3);
+  position:relative; overflow:hidden;
+  box-shadow:0 40px 90px -30px rgba(124,58,237,0.6);
+}
+.cta-card::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.09) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 70% 80% at 50% 50%,#000,transparent 76%);
+}
+.cta-card>*{ position:relative; z-index:1; }
+.cta-card .ktag{ color:#fff; }
+.cta-card .ktag::before,.cta-card .ktag::after{ background:rgba(255,255,255,0.6); }
+.cta-k h2{ font-family:var(--disp); font-weight:700; font-size:clamp(34px,5vw,68px); line-height:0.98; letter-spacing:-0.035em; margin-bottom:16px; color:#fff; }
+.cta-k h2 .g{ color:#fff; -webkit-text-fill-color:#fff; background:none; }
+.cta-k p{ font-size:16px; color:rgba(255,255,255,0.85); max-width:480px; margin:0 auto 30px; line-height:1.6; }
+.cta-card .btn-big{ background:#fff; color:#7C3AED; box-shadow:0 14px 38px -12px rgba(0,0,0,0.35); }
+.cta-card .btn-out{ background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.3); color:#fff; }
+.cta-card .btn-out:hover{ background:rgba(255,255,255,0.2); border-color:rgba(255,255,255,0.5); }
+
+/* ─── footer ─── */
+/* ─── what is AnyNews — closing summary ─── */
+.summary{ padding:96px 0 8px; }
+.summary-card{
+  border:1px solid var(--line); border-radius:28px; padding:60px 56px;
+  background:var(--surf); box-shadow:0 30px 80px -40px rgba(91,33,182,0.28);
+  position:relative; overflow:hidden;
+}
+.summary-card::before{
+  content:''; position:absolute; top:-90px; right:-70px; width:280px; height:280px;
+  border-radius:50%; background:var(--grad); opacity:0.1; filter:blur(50px); pointer-events:none;
+}
+@media(max-width:680px){ .summary-card{ padding:40px 26px; } }
+.summary-tag{
+  display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700;
+  letter-spacing:0.08em; text-transform:uppercase; color:var(--v2); margin-bottom:20px;
+}
+.summary-tag::before{ content:''; width:24px; height:2px; background:var(--grad); }
+.summary-card h2{
+  font-family:var(--disp); font-weight:800; font-size:clamp(26px,3.4vw,42px);
+  line-height:1.14; letter-spacing:-0.03em; margin-bottom:20px; max-width:20ch;
+}
+.summary-card h2 .g{ background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.summary-card p{ font-size:16px; color:var(--tx-2); line-height:1.68; max-width:680px; margin-bottom:16px; }
+.summary-card p:last-of-type{ margin-bottom:0; }
+.summary-card p b{ color:var(--tx); font-weight:700; }
+.summary-points{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:32px;
+}
+@media(max-width:680px){ .summary-points{ grid-template-columns:1fr; } }
+.sp-item{
+  display:flex; gap:11px; align-items:flex-start; padding:16px 16px;
+  border:1px solid var(--line); border-radius:14px; background:var(--bg-2);
+}
+.sp-item .sp-dot{
+  width:22px; height:22px; border-radius:7px; background:var(--grad-2); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.sp-item .sp-tx{ font-size:13px; color:var(--tx-2); line-height:1.5; }
+.sp-item .sp-tx b{ display:block; color:var(--tx); font-weight:700; font-size:13.5px; margin-bottom:2px; }
+
+.footer{ border-top:1px solid var(--line); padding:64px 0 36px; background:var(--bg-2); }
+.foot-grid{ display:grid; grid-template-columns:1.5fr repeat(4,1fr); gap:40px; }
+@media(max-width:900px){ .foot-grid{ grid-template-columns:1fr 1fr; gap:28px; } }
+@media(max-width:500px){ .foot-grid{ grid-template-columns:1fr; } }
+.foot-brand .logo{ margin-bottom:14px; }
+.foot-brand p{ font-size:13px; color:var(--tx-3); line-height:1.6; max-width:260px; }
+.foot-col h4{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--tx-3); margin-bottom:16px; }
+.foot-col a{ display:block; font-size:14px; color:var(--tx-2); padding:5px 0; transition:color .15s; }
+.foot-col a:hover{ color:var(--v1); }
+.foot-bottom{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:40px; padding-top:24px; border-top:1px solid var(--line); font-size:12px; color:var(--tx-3); }
+.foot-bottom a{ color:var(--tx-3); transition:color .15s; margin-left:16px; }
+.foot-bottom a:hover{ color:var(--tx); }
+
+/* reveal */
+.rv{ opacity:0; transform:translateY(26px); transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1); }
+.rv.in{ opacity:1; transform:none; }
+.rv.d1{ transition-delay:.09s; } .rv.d2{ transition-delay:.18s; } .rv.d3{ transition-delay:.27s; }
+</style>
+</head>
+<body>
+
+<div class="aura"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="prog" id="prog"></div>
+
+<div class="shell">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="logo"><span class="logo-mark"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#5B21B6"/><stop offset="0.5" stop-color="#7C3AED"/><stop offset="1" stop-color="#C026D3"/></linearGradient></defs><rect width="28" height="28" rx="8" fill="url(#lg)"/><path d="M7 20 L14 8 L21 20" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="17" r="2" fill="#fff"/><path d="M8.5 14.5 L14 14.5 M14 14.5 L19.5 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></span>AnyNews<span class="ai">.ai</span></a>
+    <div class="nav-links">
+      <a href="index.html">Product</a><a href="#kdemo">How it works</a><a href="pricing.html">Pricing</a><a href="affiliate.html">Affiliates</a><a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="login.html" class="si">Sign in</a>
+      <a href="signup.html" class="btn-pill">Start free</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="bound">
+      <div class="hero-flag rv">
+        <span class="pp"></span> Breaking story detected 4 seconds ago
+        <span class="chip">LIVE</span>
+      </div>
+      <h1 class="rv d1">Turn breaking stories into <span class="flow">attention-grabbing</span> social content <span class="flow">before the world</span> catches on.</h1>
+      <p class="hero-lede rv d2">AnyNews is the first AI newsroom that monitors trusted sources in real time, detects emerging stories instantly, and creates fully written, designed, and platform-optimized posts for every platform - within seconds.</p>
+      <div class="hero-cta rv d3">
+        <a href="#" class="btn-big">Start free newsroom →</a>
+        <a href="#" class="btn-out">▶ Watch demo</a>
+      </div>
+      <div class="ribbon rv d3">
+        <div class="ribbon-cell"><div class="rv2">&lt;60s</div><div class="rl">Signal to live</div></div>
+        <div class="ribbon-cell"><div class="rv2">5×</div><div class="rl">Channels per post</div></div>
+        <div class="ribbon-cell"><div class="rv2">24/7</div><div class="rl">Always monitoring</div></div>
+        <div class="ribbon-cell"><div class="rv2">9.6</div><div class="rl">Avg source trust</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE DEMO -->
+  <section class="sec">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">Watch it work</div>
+        <h2 class="kh2">Signal in. <span class="g">Five posts out.</span></h2>
+        <p class="ksub">One unbroken motion — three breaking signals picked, a story composed for each, all published across five platforms. Fifteen native posts. Watch it run.</p>
+      </div>
+      <div class="kdemo rv" id="kdemo">
+        <div class="kd-bar">
+          <span class="kdpulse"></span>
+          <span class="kdt">AnyNews<span class="ai">.ai</span> &nbsp;newsroom</span>
+          <span class="kdph"><span id="kdphase">Detecting</span> · <b id="kdclock">0:00</b></span>
+        </div>
+
+        <div class="kd-canvas" id="kdcanvas">
+          <svg class="kd-wires" id="kdwires" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="kgrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#6D28D9"/>
+                <stop offset="1" stop-color="#C026D3"/>
+              </linearGradient>
+              <radialGradient id="ksparkg">
+                <stop offset="0" stop-color="#D8B4FE"/>
+                <stop offset="1" stop-color="#7C3AED"/>
+              </radialGradient>
+            </defs>
+          </svg>
+
+          <!-- TIER 1 — 8 signals -->
+          <div class="kd-tier">
+            <div class="kd-tierhead act" id="kth1">
+              <span class="kt-step">1</span>
+              <span class="kt-lbl">Incoming signals</span>
+              <span class="kt-tm">0:00 — 0:12</span>
+            </div>
+            <div class="kd-sigs" id="kdsigs">
+              <div class="ksig" data-sig="0"><div class="ks-top"><span class="kdot"></span><span class="ksrc">REUTERS</span><span class="ksc">0.91</span></div><div class="ktxt">Commodities desk update</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="1"><div class="ks-top"><span class="kdot"></span><span class="ksrc">BLOOMBERG</span><span class="ksc">0.88</span></div><div class="ktxt">Gold futures climb in Asia</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="2"><div class="ks-top"><span class="kdot"></span><span class="ksrc">REUTERS</span><span class="ksc">0.97</span></div><div class="ktxt">Gold breaks past $4,700</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="3"><div class="ks-top"><span class="kdot"></span><span class="ksrc">KITCO</span><span class="ksc">0.79</span></div><div class="ktxt">Bullion demand keeps rising</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="4"><div class="ks-top"><span class="kdot"></span><span class="ksrc">AP</span><span class="ksc">0.84</span></div><div class="ktxt">Safe-haven flows accelerate</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="5"><div class="ks-top"><span class="kdot"></span><span class="ksrc">CNBC</span><span class="ksc">0.81</span></div><div class="ktxt">Miners rally on spot price</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="6"><div class="ks-top"><span class="kdot"></span><span class="ksrc">WSJ</span><span class="ksc">0.86</span></div><div class="ktxt">Central banks keep buying</div><span class="ks-pick">PICKED</span></div>
+              <div class="ksig" data-sig="7"><div class="ks-top"><span class="kdot"></span><span class="ksrc">FT</span><span class="ksc">0.83</span></div><div class="ktxt">Analysts lift gold targets</div><span class="ks-pick">PICKED</span></div>
+            </div>
+          </div>
+
+          <div class="kd-gap-a"></div>
+
+          <!-- TIER 2 — 3 cards -->
+          <div class="kd-tier">
+            <div class="kd-tierhead" id="kth2">
+              <span class="kt-step">2</span>
+              <span class="kt-lbl">Campaign composed — 3 stories</span>
+              <span class="kt-tm">0:12 — 0:34</span>
+            </div>
+            <div class="kd-cards" id="kdcards">
+              <div class="kd-cardwrap">
+                <div class="kd-card" data-card="0">
+                  <div class="kcbg" style="background-image:url('img/gold-bars-stacked.webp');"></div>
+                  <div class="kcscrim"></div>
+                  <div class="kcbody">
+                    <span class="kckick">BREAKING</span>
+                    <div class="kchead">Gold breaks past $4,700</div>
+                    <span class="kcfoot">VIA REUTERS</span>
+                  </div>
+                </div>
+                <div class="kd-cardtag">From Reuters · 0.97</div>
+              </div>
+              <div class="kd-cardwrap">
+                <div class="kd-card" data-card="1">
+                  <div class="kcbg" style="background-image:url('img/gold-bars-hand.avif');"></div>
+                  <div class="kcscrim"></div>
+                  <div class="kcbody">
+                    <span class="kckick">MARKETS</span>
+                    <div class="kchead">Gold futures climb across Asia</div>
+                    <span class="kcfoot">VIA REUTERS</span>
+                  </div>
+                </div>
+                <div class="kd-cardtag">From Bloomberg · 0.88</div>
+              </div>
+              <div class="kd-cardwrap">
+                <div class="kd-card" data-card="2">
+                  <div class="kcbg" style="background-image:url('img/gold-bars-pile.webp');"></div>
+                  <div class="kcscrim"></div>
+                  <div class="kcbody">
+                    <span class="kckick">FINANCE</span>
+                    <div class="kchead">Central banks keep buying gold</div>
+                    <span class="kcfoot">VIA REUTERS</span>
+                  </div>
+                </div>
+                <div class="kd-cardtag">From WSJ · 0.86</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kd-gap-b"></div>
+
+          <!-- TIER 3 — networks -->
+          <div class="kd-tier">
+            <div class="kd-tierhead" id="kth3">
+              <span class="kt-step">3</span>
+              <span class="kt-lbl">Published live</span>
+              <span class="kt-tm">0:34 — 0:58</span>
+            </div>
+            <div class="kd-nets" id="kdnets">
+              <div class="knet" data-net="0">
+                <span class="kn-ring"></span>
+                <span class="kn-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24H16.17l-5.21-6.82L4.99 21.75H1.68l7.73-8.83L1.25 2.25H8.08l4.71 6.23z"/></svg></span>
+                <span class="kn-name">X</span>
+                <span class="kn-stat"><span class="kn-count">0</span>/3 posts</span>
+              </div>
+              <div class="knet" data-net="1">
+                <span class="kn-ring"></span>
+                <span class="kn-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg></span>
+                <span class="kn-name">Instagram</span>
+                <span class="kn-stat"><span class="kn-count">0</span>/3 posts</span>
+              </div>
+              <div class="knet" data-net="2">
+                <span class="kn-ring"></span>
+                <span class="kn-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.41c0-3 1.79-4.66 4.53-4.66 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.95.93-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0 0 24 12z"/></svg></span>
+                <span class="kn-name">Facebook</span>
+                <span class="kn-stat"><span class="kn-count">0</span>/3 posts</span>
+              </div>
+              <div class="knet" data-net="3">
+                <span class="kn-ring"></span>
+                <span class="kn-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></span>
+                <span class="kn-name">LinkedIn</span>
+                <span class="kn-stat"><span class="kn-count">0</span>/3 posts</span>
+              </div>
+              <div class="knet" data-net="4">
+                <span class="kn-ring"></span>
+                <span class="kn-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-4.37 23.18c-.1-.95-.2-2.4.04-3.44l1.39-5.96s-.36-.71-.36-1.76c0-1.64.96-2.87 2.14-2.87 1.01 0 1.5.76 1.5 1.66 0 1.01-.64 2.53-.98 3.93-.28 1.18.59 2.13 1.75 2.13 2.1 0 3.71-2.21 3.71-5.4 0-2.83-2.03-4.81-4.94-4.81-3.36 0-5.34 2.52-5.34 5.13 0 1.01.39 2.1.88 2.7l-.33 1.34c-.05.22-.17.27-.4.16-1.5-.7-2.44-2.89-2.44-4.65 0-3.79 2.75-7.26 7.93-7.26 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15A12 12 0 1 0 12 0z"/></svg></span>
+                <span class="kn-name">Pinterest</span>
+                <span class="kn-stat"><span class="kn-count">0</span>/3 posts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kd-foot">
+          <span id="kdlabel">Detecting the signal</span>
+          <span>Elapsed <b id="kdclock2">0:00</b> / 0:58</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLES -->
+
+  <!-- ROLES -->
+
+  <!-- ROLES -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">The operators</div>
+        <h2 class="kh2">Your whole newsroom, <span class="g">on staff.</span></h2>
+        <p class="ksub">A real newsroom needs an editor, a designer, and a researcher. AnyNews gives you all three — as AI operators.</p>
+      </div>
+      <div class="role-stack">
+        <div class="role-big rv">
+          <div class="rnum">01</div>
+          <div class="rmid"><h3>The Senior Editor</h3><div class="rt">writes the words</div></div>
+          <div class="rdesc">Every headline and caption in your exact brand voice. Knows what makes people stop scrolling — and what makes them click.
+            <div class="rl"><span>engagement-tuned</span><span>your tone</span><span>copy ×5</span></div>
+          </div>
+        </div>
+        <div class="role-big rv d1">
+          <div class="rnum">02</div>
+          <div class="rmid"><h3>The Art Director</h3><div class="rt">designs the page</div></div>
+          <div class="rdesc">Composes a custom news card for every story — real editorial design with imagery and your logo. Never a template.
+            <div class="rl"><span>gallery-grade</span><span>every feed size</span><span>on-brand</span></div>
+          </div>
+        </div>
+        <div class="role-big rv d2">
+          <div class="rnum">03</div>
+          <div class="rmid"><h3>The Researcher</h3><div class="rt">finds the story</div></div>
+          <div class="rdesc">Monitors every source you trust, 24/7. Scores each story for relevance and credibility — so only the real ones reach you.
+            <div class="rl"><span>RSS · X · wires</span><span>trust scoring</span><span>deduplicated</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPLACES -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">What it replaces</div>
+        <h2 class="kh2">One app instead of <span class="g">a whole stack.</span></h2>
+        <p class="ksub">A fast newsroom usually means four hires and four subscriptions. AnyNews is the one operator that does all of it.</p>
+      </div>
+      <div class="versus rv">
+        <div class="vs-side vs-old">
+          <div class="vl">Your stack today</div>
+          <h3>Four roles, four tools</h3>
+          <div class="vs-item"><span class="ic">✕</span><span class="vt">A writer for every headline</span><span class="vc">$3k+/mo</span></div>
+          <div class="vs-item"><span class="ic">✕</span><span class="vt">A designer for each card</span><span class="vc">$3k+/mo</span></div>
+          <div class="vs-item"><span class="ic">✕</span><span class="vt">A social manager to cross-post</span><span class="vc">$2k+/mo</span></div>
+          <div class="vs-item"><span class="ic">✕</span><span class="vt">A monitoring tool</span><span class="vc">$100+/mo</span></div>
+          <div class="vs-foot">Hours of lag — the story goes cold.</div>
+        </div>
+        <div class="vs-mid"><span>vs</span></div>
+        <div class="vs-side vs-new">
+          <div class="vl">With AnyNews</div>
+          <h3>One AI newsroom</h3>
+          <div class="vs-item"><span class="ic">✓</span><span class="vt">Writes headlines in your voice</span></div>
+          <div class="vs-item"><span class="ic">✓</span><span class="vt">Designs a custom card per story</span></div>
+          <div class="vs-item"><span class="ic">✓</span><span class="vt">Publishes to all five channels</span></div>
+          <div class="vs-item"><span class="ic">✓</span><span class="vt">Monitors every source, 24/7</span></div>
+          <div class="vs-foot">Signal to live in under 60 seconds.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARD SHOWCASE -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">The output</div>
+        <h2 class="kh2">Scroll-stopping news cards that <span class="g">beat 99% of the industry.</span></h2>
+        <p class="ksub">Not text on a stock photo. AnyNews composes real editorial design — typographic hierarchy, custom imagery, your logo — across a library of templates built to win the feed.</p>
+      </div>
+      <div class="gal-wrap rv">
+        <div class="gal-track">
+              <div class="gcard tA" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">BREAKING</span><div class="gc-head">Gold breaks past $4,700 as tensions ease</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">Gold is the ultimate barometer of fear. When it moves, pay attention.</div><div class="gc-attr">— Ray Dalio, Bridgewater</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-hand.avif');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">MARKETS</span><div class="gc-head">Bullion demand climbs to a four-week high</div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bar-single.jpg');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA REUTERS</span></div><div class="gc-head">Mining stocks surge on gold spike</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tC" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE C</span><div class="gc-body"><div class="gc-kick">ANALYSIS</div><div class="gc-head">What record gold means for your portfolio</div><div class="gc-rule"></div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">In a world of fiat uncertainty, gold does not need a central bank to back it.</div><div class="gc-attr">— Peter Schiff, Euro Pacific</div></div></div>
+              <div class="gcard tA" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">FINANCE</span><div class="gc-head">Central banks add 90 tonnes of gold</div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-hand.avif');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA BLOOMBERG</span></div><div class="gc-head">Spot gold crosses $4,700 during Asia session</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tA" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">BREAKING</span><div class="gc-head">Gold breaks past $4,700 as tensions ease</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">Gold is the ultimate barometer of fear. When it moves, pay attention.</div><div class="gc-attr">— Ray Dalio, Bridgewater</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-hand.avif');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">MARKETS</span><div class="gc-head">Bullion demand climbs to a four-week high</div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bar-single.jpg');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA REUTERS</span></div><div class="gc-head">Mining stocks surge on gold spike</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tC" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE C</span><div class="gc-body"><div class="gc-kick">ANALYSIS</div><div class="gc-head">What record gold means for your portfolio</div><div class="gc-rule"></div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">In a world of fiat uncertainty, gold does not need a central bank to back it.</div><div class="gc-attr">— Peter Schiff, Euro Pacific</div></div></div>
+              <div class="gcard tA" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">FINANCE</span><div class="gc-head">Central banks add 90 tonnes of gold</div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-hand.avif');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA BLOOMBERG</span></div><div class="gc-head">Spot gold crosses $4,700 during Asia session</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+        </div>
+      </div>
+      <div class="gal-wrap gal-row2 rv">
+        <div class="gal-track">
+              <div class="gcard tP" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-stacked.webp');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA AP NEWS</span></div><div class="gc-head">Fed signals no cut — gold rallies anyway</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">ECONOMY</span><div class="gc-head">Inflation data sends investors back to metals</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">We are adding gold to every portfolio. The risk-reward is compelling.</div><div class="gc-attr">— Goldman Sachs Research</div></div></div>
+              <div class="gcard tA" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">BREAKING</span><div class="gc-head">Mining stocks surge as spot clears $4,700</div></div></div>
+              <div class="gcard tC" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">TEMPLATE C</span><div class="gc-body"><div class="gc-kick">EXPLAINER</div><div class="gc-head">The three forces driving the 2026 gold rally</div><div class="gc-rule"></div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-hand.avif');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-pile.webp');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA CNBC</span></div><div class="gc-head">Asian markets open higher on gold news</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">Gold at $4,700 is not the ceiling — it is the floor for the next decade.</div><div class="gc-attr">— Citi Commodities Desk</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">UPDATE</span><div class="gc-head">Gold ETFs see largest weekly inflow since 2020</div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-stacked.webp');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA AP NEWS</span></div><div class="gc-head">Fed signals no cut — gold rallies anyway</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">ECONOMY</span><div class="gc-head">Inflation data sends investors back to metals</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">We are adding gold to every portfolio. The risk-reward is compelling.</div><div class="gc-attr">— Goldman Sachs Research</div></div></div>
+              <div class="gcard tA" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;"><span class="gc-tpl">TEMPLATE A</span><div class="gc-body"><span class="gc-kick">BREAKING</span><div class="gc-head">Mining stocks surge as spot clears $4,700</div></div></div>
+              <div class="gcard tC" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">TEMPLATE C</span><div class="gc-body"><div class="gc-kick">EXPLAINER</div><div class="gc-head">The three forces driving the 2026 gold rally</div><div class="gc-rule"></div></div></div>
+              <div class="gcard tP" style="background-image:url('img/gold-bars-hand.avif');"><span class="gc-tpl">PIP</span><div class="gc-body"><div class="gc-pip" style="background-image:url('img/gold-bars-pile.webp');"></div><div class="gc-pip-bar"><span class="gc-pip-live">LIVE</span><span class="gc-pip-src">VIA CNBC</span></div><div class="gc-head">Asian markets open higher on gold news</div><div class="gc-pip-foot">#GoldSilverNews</div></div></div>
+              <div class="gcard tQ" style="background-image:url('img/gold-bars-stacked.webp');"><span class="gc-tpl">QUOTE</span><div class="gc-body"><div class="gc-quote-mark">“</div><div class="gc-head">Gold at $4,700 is not the ceiling — it is the floor for the next decade.</div><div class="gc-attr">— Citi Commodities Desk</div></div></div>
+              <div class="gcard tB" style="background-image:url('img/gold-bars-pile.webp');"><span class="gc-tpl">TEMPLATE B</span><div class="gc-body"><span class="gc-kick">UPDATE</span><div class="gc-head">Gold ETFs see largest weekly inflow since 2020</div></div></div>
+        </div>
+      </div>
+      <div class="gal-legend rv">
+        <span><i style="background:var(--grad-2);"></i> Gradient overlay</span>
+        <span><i style="background:#fff;border:1px solid var(--line-2);"></i> Caption band</span>
+        <span><i style="background:var(--v1);"></i> Full-color editorial</span>
+        <span><i style="background:linear-gradient(135deg,#16A34A,#059669);"></i> Quote card</span>
+        <span><i style="background:linear-gradient(135deg,#DB2777,#E11D48);"></i> PIP — picture in picture</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FIRST TO REPORT -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="race-k">
+        <div class="rv">
+          <div class="ktag">First to report</div>
+          <h2 class="rk-h">Be the account that <span class="g">breaks it.</span></h2>
+          <p>In a breaking story, the first credible post wins the reach, the follows, and the authority. While a manual team picks an image, AnyNews has already published.</p>
+          <ul class="feat">
+            <li><span class="pl">+</span><b>Sources checked every few minutes</b></li>
+            <li><span class="pl">+</span><b>No drafting, no design bottleneck</b></li>
+            <li><span class="pl">+</span><b>Win the algorithm's early window</b></li>
+          </ul>
+        </div>
+        <div class="bars rv d1" id="bars">
+          <div class="bar-row win">
+            <div class="bl"><span class="bn">AnyNews.ai</span><span class="bt">0:58</span></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:8%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bl"><span class="bn">In-house social team</span><span class="bt">~42 min</span></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:50%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bl"><span class="bn">Freelance writer + designer</span><span class="bt">~2.5 hrs</span></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:84%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bl"><span class="bn">Generic scheduling tool</span><span class="bt">manual</span></div>
+            <div class="bar-track"><div class="bar-fill" style="--w:100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM — 5-up grid -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">Every network, tuned</div>
+        <h2 class="kh2">One story, <span class="g">five native posts.</span></h2>
+        <p class="ksub">A post that works on LinkedIn dies on X. AnyNews reshapes each story for its platform — copy, tone, crop, hashtags — and exports every card at the size each network actually rewards.</p>
+      </div>
+      <div class="pgrid rv">
+
+        <!-- X -->
+        <div class="pcard">
+          <div class="pc-top">
+            <span class="pc-logo" style="background:#000;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24H16.17l-5.21-6.82L4.99 21.75H1.68l7.73-8.83L1.25 2.25H8.08l4.71 6.23z"/></svg></span>
+            <span class="pc-name">X</span>
+            <span class="pc-ratio">16:9</span>
+          </div>
+          <div class="pc-preview">
+            <div class="pc-img r169" style="background-image:url('img/gold-bars-stacked.webp');">
+              <div class="pc-cap">
+                <span class="pc-kick">BREAKING</span>
+                <div class="pc-headline">Gold breaks past <span class="hl">$4,700</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pc-spec">
+            <div class="ps-row"><span class="ps-k">Image</span><span class="ps-v"><b>1600×900</b> · 16:9 landscape</span></div>
+            <div class="ps-row"><span class="ps-k">Copy</span><span class="ps-v"><b>≤ 280 chars</b> — punchy hook first</span></div>
+            <div class="ps-row"><span class="ps-k">Tags</span><span class="ps-v"><b>1–2</b> hashtags, inline</span></div>
+            <div class="pc-tip"><b>Best practice:</b> lead with the number or the shock. First 8 words decide the repost.</div>
+          </div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="pcard">
+          <div class="pc-top">
+            <span class="pc-logo" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg></span>
+            <span class="pc-name">Instagram</span>
+            <span class="pc-ratio">4:5</span>
+          </div>
+          <div class="pc-preview">
+            <div class="pc-img r45" style="background-image:url('img/gold-bar-single.jpg');">
+              <div class="pc-cap">
+                <span class="pc-kick">MARKETS</span>
+                <div class="pc-headline">Gold past <span class="hl">$4,700</span> as tensions ease</div>
+                <span class="pc-by">VIA REUTERS · #GoldSilverNews</span>
+              </div>
+            </div>
+          </div>
+          <div class="pc-spec">
+            <div class="ps-row"><span class="ps-k">Image</span><span class="ps-v"><b>1080×1350</b> · 4:5 portrait</span></div>
+            <div class="ps-row"><span class="ps-k">Copy</span><span class="ps-v"><b>Caption-led</b> — story in first line</span></div>
+            <div class="ps-row"><span class="ps-k">Tags</span><span class="ps-v"><b>8–12</b> hashtags, end of caption</span></div>
+            <div class="pc-tip"><b>Best practice:</b> bold on-image headline — most viewers never read the caption.</div>
+          </div>
+        </div>
+
+        <!-- Facebook -->
+        <div class="pcard">
+          <div class="pc-top">
+            <span class="pc-logo" style="background:#1877F2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.41c0-3 1.79-4.66 4.53-4.66 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.95.93-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0 0 24 12z"/></svg></span>
+            <span class="pc-name">Facebook</span>
+            <span class="pc-ratio">1:1</span>
+          </div>
+          <div class="pc-preview">
+            <div class="pc-img r11" style="background-image:url('img/gold-bars-pile.webp');">
+              <div class="pc-cap">
+                <span class="pc-kick">FINANCE</span>
+                <div class="pc-headline">Gold past <span class="hl">$4,700</span> as tensions ease</div>
+                <span class="pc-by">VIA REUTERS</span>
+              </div>
+            </div>
+          </div>
+          <div class="pc-spec">
+            <div class="ps-row"><span class="ps-k">Image</span><span class="ps-v"><b>1080×1080</b> · 1:1 square</span></div>
+            <div class="ps-row"><span class="ps-k">Copy</span><span class="ps-v"><b>Conversational</b> — 1–2 sentences</span></div>
+            <div class="ps-row"><span class="ps-k">Link</span><span class="ps-v"><b>Preview card</b> drives the click</span></div>
+            <div class="pc-tip"><b>Best practice:</b> ask a question or frame the stakes — Facebook rewards comments.</div>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="pcard">
+          <div class="pc-top">
+            <span class="pc-logo" style="background:#0A66C2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></span>
+            <span class="pc-name">LinkedIn</span>
+            <span class="pc-ratio">1.91:1</span>
+          </div>
+          <div class="pc-preview">
+            <div class="pc-img r169" style="background-image:url('img/gold-bars-hand.avif');">
+              <div class="pc-cap">
+                <span class="pc-kick">ANALYSIS</span>
+                <div class="pc-headline">What $4,700 gold signals for markets</div>
+              </div>
+            </div>
+          </div>
+          <div class="pc-spec">
+            <div class="ps-row"><span class="ps-k">Image</span><span class="ps-v"><b>1200×627</b> · 1.91:1 landscape</span></div>
+            <div class="ps-row"><span class="ps-k">Copy</span><span class="ps-v"><b>Insight-led</b> — sober, professional</span></div>
+            <div class="ps-row"><span class="ps-k">Tags</span><span class="ps-v"><b>3</b> hashtags, niche &amp; relevant</span></div>
+            <div class="pc-tip"><b>Best practice:</b> open with a takeaway, not a headline — add the "so what" for pros.</div>
+          </div>
+        </div>
+
+        <!-- Pinterest -->
+        <div class="pcard">
+          <div class="pc-top">
+            <span class="pc-logo" style="background:#E60023;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-4.37 23.18c-.1-.95-.2-2.4.04-3.44l1.39-5.96s-.36-.71-.36-1.76c0-1.64.96-2.87 2.14-2.87 1.01 0 1.5.76 1.5 1.66 0 1.01-.64 2.53-.98 3.93-.28 1.18.59 2.13 1.75 2.13 2.1 0 3.71-2.21 3.71-5.4 0-2.83-2.03-4.81-4.94-4.81-3.36 0-5.34 2.52-5.34 5.13 0 1.01.39 2.1.88 2.7l-.33 1.34c-.05.22-.17.27-.4.16-1.5-.7-2.44-2.89-2.44-4.65 0-3.79 2.75-7.26 7.93-7.26 4.16 0 7.4 2.97 7.4 6.93 0 4.14-2.61 7.46-6.23 7.46-1.21 0-2.36-.63-2.75-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15A12 12 0 1 0 12 0z"/></svg></span>
+            <span class="pc-name">Pinterest</span>
+            <span class="pc-ratio">2:3</span>
+          </div>
+          <div class="pc-preview">
+            <div class="pc-img r23" style="background-image:url('img/gold-bar-single.jpg');background-position:right center;">
+              <div class="pc-cap">
+                <span class="pc-kick">GUIDE</span>
+                <div class="pc-headline">Why gold just hit <span class="hl">$4,700</span></div>
+                <span class="pc-by">#GoldSilverNews</span>
+              </div>
+            </div>
+          </div>
+          <div class="pc-spec">
+            <div class="ps-row"><span class="ps-k">Image</span><span class="ps-v"><b>1000×1500</b> · 2:3 tall pin</span></div>
+            <div class="ps-row"><span class="ps-k">Copy</span><span class="ps-v"><b>Keyword-rich</b> — evergreen, SEO</span></div>
+            <div class="ps-row"><span class="ps-k">Title</span><span class="ps-v"><b>Descriptive</b> — front-load keywords</span></div>
+            <div class="pc-tip"><b>Best practice:</b> text overlay on the pin — Pinterest is search, write for it.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VERTICALS -->
+
+  <!-- VERTICALS -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">Built for</div>
+        <h2 class="kh2">For the new <span class="g">generation of media.</span></h2>
+        <p class="ksub">From independent creators to global news organizations — every modern publisher runs on the same speed.</p>
+      </div>
+      <div class="mag-grid">
+        <div class="mag rv">
+          <span class="mbadge">FAST SIGNALS</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+          <h3>Independent Publishers</h3>
+          <p>Turn a niche blog, X account, or newsletter into a real-time media operation.</p>
+          <div class="mtags"><span>blogs</span><span>newsletters</span><span>journalists</span><span>creators</span></div>
+        </div>
+        <div class="mag rv d1">
+          <span class="mbadge">MARKET MOVING</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 14 6-6 4 4 6-6"/><path d="M14 8h6v6"/></svg></div>
+          <h3>Financial &amp; Market News</h3>
+          <p>Detect market-moving events and publish breaking financial content first.</p>
+          <div class="mtags"><span>gold &amp; silver</span><span>crypto</span><span>stocks</span><span>fintech</span></div>
+        </div>
+        <div class="mag rv d2">
+          <span class="mbadge">HIGH ENGAGEMENT</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg></div>
+          <h3>Sports Media</h3>
+          <p>Instant reactions, breaking updates, and highlight posts for every game.</p>
+          <div class="mtags"><span>sports pages</span><span>fan communities</span><span>networks</span></div>
+        </div>
+        <div class="mag rv">
+          <span class="mbadge">BREAKING NEWS</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></div>
+          <h3>Political &amp; Breaking News</h3>
+          <p>Monitor real-time developments and distribute coverage as they happen.</p>
+          <div class="mtags"><span>commentary</span><span>geopolitical</span><span>local news</span><span>investigative</span></div>
+        </div>
+        <div class="mag rv d1">
+          <span class="mbadge">VIRAL CONTENT</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div>
+          <h3>Entertainment &amp; Viral Media</h3>
+          <p>Turn trends, celebrity moments, and internet culture into engaging content.</p>
+          <div class="mtags"><span>celebrity</span><span>meme pages</span><span>pop culture</span><span>creators</span></div>
+        </div>
+        <div class="mag rv d2">
+          <span class="mbadge">REAL-TIME</span>
+          <div class="mglyph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <h3>Agencies &amp; Brands</h3>
+          <p>Operate like a modern media company with AI-powered reactive workflows.</p>
+          <div class="mtags"><span>agencies</span><span>ecommerce</span><span>PR teams</span><span>marketing</span></div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:15px;color:var(--tx-2);margin-top:34px;">Whether you publish for 1,000 readers or 100 million viewers — the same speed, the same intelligence.</p>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">By the numbers</div>
+        <h2 class="kh2">Built to <span class="g">outrun a team.</span></h2>
+      </div>
+      <div class="mega rv">
+        <div class="mega-cell"><div class="mv">60s</div><div class="ml">Signal to published</div></div>
+        <div class="mega-cell"><div class="mv">5×</div><div class="ml">Channels from one post</div></div>
+        <div class="mega-cell"><div class="mv">24/7</div><div class="ml">Autonomous monitoring</div></div>
+        <div class="mega-cell"><div class="mv">0</div><div class="ml">Designers required</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES -->
+  <section class="sec" style="padding-top:0;">
+    <div class="bound">
+      <div class="sec-top rv">
+        <div class="ktag">Run modes</div>
+        <h2 class="kh2">As hands-on as <span class="g">you want.</span></h2>
+        <p class="ksub">Start with full control. Graduate to one-tap approvals. Flip to fully autonomous when you trust it.</p>
+      </div>
+      <div class="mode-row">
+        <div class="mode-k rv">
+          <div class="mk-tag">MODE 01</div>
+          <h3>Manual</h3>
+          <p>Review and edit every campaign before it ships. Total editorial control for when the story matters most.</p>
+        </div>
+        <div class="mode-k feat rv d1">
+          <div class="mk-tag">MODE 02 · MOST POPULAR</div>
+          <h3>Approval</h3>
+          <p>The finished campaign comes to your phone. One tap to publish, one to skip. Speed without losing the wheel.</p>
+        </div>
+        <div class="mode-k rv d2">
+          <div class="mk-tag">MODE 03</div>
+          <h3>Autonomous</h3>
+          <p>Set a confidence threshold and let it run. High-trust stories publish themselves, 24/7, while you sleep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-k">
+    <div class="bound">
+      <div class="cta-card rv">
+        <div class="ktag" style="justify-content:center;">Ready when you are</div>
+        <h2>Be first. <span class="g">Every time.</span></h2>
+        <p>Set up your first channel in two minutes. Watch a story go from signal to five live posts — free, no card required.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="#" class="btn-big">Start free newsroom →</a>
+          <a href="#" class="btn-out">View pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS ANYNEWS — summary -->
+  <section class="summary">
+    <div class="bound">
+      <div class="summary-card rv">
+        <div class="summary-tag">In short</div>
+        <h2>The first ever <span class="g">complete AI newsroom.</span></h2>
+        <p>AnyNews is the first ever complete newsroom in a single app, built to make you the first to publish the moment a story breaks. Pick a signal and get a fully written, fully designed campaign ready to go live everywhere at once.</p>
+        <p>It replaces the writer, the designer, the social manager, and the monitoring tool with one intelligent system. Smart features — real-time signal detection, trust scoring, automatic news-card design, per-platform reformatting, and one-tap or fully autonomous publishing — <b>streamline the entire process like never before</b>, so a breaking story goes from detected to distributed before a traditional team has even opened the editor.</p>
+        <div class="summary-points">
+          <div class="sp-item">
+            <span class="sp-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="sp-tx"><b>Be first, every time</b>Publish the second you pick a signal — while the story is still breaking.</span>
+          </div>
+          <div class="sp-item">
+            <span class="sp-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="sp-tx"><b>One app, whole newsroom</b>Detection, writing, design, and distribution in a single built-for-you tool.</span>
+          </div>
+          <div class="sp-item">
+            <span class="sp-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="sp-tx"><b>Smart, streamlined, automatic</b>Trust scoring, native reformatting, and autonomous publishing handle the busywork.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="bound">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#5B21B6"/><stop offset="0.5" stop-color="#7C3AED"/><stop offset="1" stop-color="#C026D3"/></linearGradient></defs><rect width="28" height="28" rx="8" fill="url(#lg)"/><path d="M7 20 L14 8 L21 20" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="14" cy="17" r="2" fill="#fff"/><path d="M8.5 14.5 L14 14.5 M14 14.5 L19.5 14.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></span>AnyNews<span class="ai">.ai</span></a>
+          <p>The first complete AI newsroom. From signal to published in under 60 seconds.</p>
+        </div>
+        <div class="foot-col"><h4>Product</h4><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="affiliate.html">Affiliates</a><a href="#">API docs</a></div>
+        <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="#">Careers</a><a href="#">Blog</a></div>
+        <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="cookies.html">Cookie Policy</a><a href="acceptable-use.html">Acceptable Use</a><a href="gdpr.html">GDPR Rights</a><a href="dmca.html">DMCA</a><a href="refund.html">Refunds</a><a href="sla.html">SLA</a><a href="dpa.html">DPA</a><a href="security.html">Security</a></div>
+        <div class="foot-col"><h4>Connect</h4><a href="#">X (Twitter)</a><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 AnyNews.ai &mdash; All rights reserved.</span>
+        <span><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="cookies.html">Cookies</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script>
+// scroll progress
+const prog=document.getElementById('prog');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+// reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// animate race bars on enter
+const bio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('go');bio.unobserve(e.target);}});},{threshold:0.4});
+const bars=document.getElementById('bars'); if(bars) bio.observe(bars);
+
+/* ── live demo: signals → 3 cards → networks ── */
+(function(){
+  const demo=document.getElementById('kdemo'); if(!demo) return;
+  const canvas=document.getElementById('kdcanvas');
+  const wires=document.getElementById('kdwires');
+  const sigs=[...demo.querySelectorAll('.ksig')];
+  const cards=[...demo.querySelectorAll('.kd-card')];
+  const nets=[...demo.querySelectorAll('.knet')];
+  const phase=document.getElementById('kdphase');
+  const labelEl=document.getElementById('kdlabel');
+  const th1=document.getElementById('kth1'),th2=document.getElementById('kth2'),th3=document.getElementById('kth3');
+  const c1=document.getElementById('kdclock'),c2=document.getElementById('kdclock2');
+  const PICKED=[2,1,6];   // one signal feeds each of the 3 cards (left, center, right)
+  let timers=[], raf=[];
+  const T=(fn,ms)=>timers.push(setTimeout(fn,ms));
+  const clearAll=()=>{ timers.forEach(clearTimeout); timers=[]; raf.forEach(cancelAnimationFrame); raf=[]; };
+  const fmt=s=>'0:'+String(s).padStart(2,'0');
+  const setClock=v=>{ c1.textContent=fmt(v); c2.textContent=fmt(v); };
+  function clock(from,to,dur){
+    const steps=Math.max(1,to-from), each=dur/steps;
+    for(let i=1;i<=steps;i++) T(()=>setClock(from+i),each*i);
+  }
+
+  /* wire bookkeeping: index 0 = picked-signal-0→card0, 1 = signal-1→card1, 2 = signal-2→card2,
+     then 3..17 = card→net (card0:3-7, card1:8-12, card2:13-17) */
+  let W=[];
+  function pt(el,where){
+    const cb=canvas.getBoundingClientRect(), b=el.getBoundingClientRect();
+    const x=b.left+b.width/2-cb.left;
+    let y;
+    if(where==='top') y=b.top-cb.top-6;
+    else if(where==='bottom') y=b.bottom-cb.top+6;
+    else y=b.top+b.height/2-cb.top;
+    return {x,y};
+  }
+  function addWire(a,b){
+    const midY=(a.y+b.y)/2;
+    const d=`M ${a.x} ${a.y} C ${a.x} ${midY}, ${b.x} ${midY}, ${b.x} ${b.y}`;
+    const guide=document.createElementNS('http://www.w3.org/2000/svg','path');
+    guide.setAttribute('d',d); guide.setAttribute('class','kd-wire');
+    const glow=document.createElementNS('http://www.w3.org/2000/svg','path');
+    glow.setAttribute('d',d); glow.setAttribute('class','kd-wire-glow');
+    const spark=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    spark.setAttribute('r','5'); spark.setAttribute('class','kd-spark'); spark.setAttribute('fill','url(#ksparkg)');
+    wires.appendChild(guide); wires.appendChild(glow); wires.appendChild(spark);
+    const len=guide.getTotalLength();
+    glow.style.strokeDasharray=len; glow.style.strokeDashoffset=len;
+    return {guide,glow,spark,path:guide,len};
+  }
+  function buildWires(){
+    [...wires.querySelectorAll('.kd-wire,.kd-wire-glow,.kd-spark')].forEach(n=>n.remove());
+    const cb=canvas.getBoundingClientRect();
+    wires.setAttribute('viewBox',`0 0 ${cb.width} ${cb.height}`);
+    wires.setAttribute('width',cb.width); wires.setAttribute('height',cb.height);
+    W=[];
+    // each picked signal -> its own card
+    cards.forEach((card,i)=> W.push(addWire(pt(sigs[PICKED[i]],'bottom'), pt(card,'top'))) );
+    // each card bottom -> each network top
+    cards.forEach(card=>{
+      const cBot=pt(card,'bottom');
+      nets.forEach(net=> W.push(addWire(cBot, pt(net,'top'))) );
+    });
+  }
+  function drawWire(i,dur){
+    const w=W[i]; if(!w) return;
+    w.guide.classList.add('lit');
+    w.glow.style.transition=`stroke-dashoffset ${dur}ms ease, opacity .2s`;
+    w.glow.classList.add('draw'); w.glow.style.strokeDashoffset='0';
+  }
+  function sendSpark(i,dur,onLand){
+    const w=W[i]; if(!w){ onLand&&onLand(); return; }
+    const sp=w.spark, len=w.len, path=w.path;
+    sp.style.opacity='1';
+    const t0=performance.now();
+    function step(now){
+      let p=(now-t0)/dur; if(p>1)p=1;
+      const e=p*p*(2.2-1.2*p);              // ease-in, accelerates toward target
+      const q=path.getPointAtLength(e*len);
+      sp.setAttribute('cx',q.x); sp.setAttribute('cy',q.y);
+      sp.setAttribute('r', 4 + 2.6*Math.sin(p*Math.PI));   // swells mid-flight
+      if(p<1){ raf.push(requestAnimationFrame(step)); }
+      else { sp.style.opacity='0'; onLand&&onLand(); }
+    }
+    raf.push(requestAnimationFrame(step));
+  }
+  /* lime flash for ~1s, then fades back (long CSS transition on .knet handles fade) */
+  function flashNet(net){
+    net.classList.add('flash');
+    T(()=>net.classList.remove('flash'),1000);
+  }
+
+  function reset(){
+    sigs.forEach(s=>s.classList.remove('show','picked','dimmed'));
+    cards.forEach(c=>c.classList.remove('in','done'));
+    nets.forEach(n=>{
+      n.classList.remove('flash','done');
+      n.querySelector('.kn-count').textContent='0';
+    });
+    th1.classList.add('act'); th2.classList.remove('act'); th3.classList.remove('act');
+    phase.textContent='Detecting'; labelEl.textContent='Detecting the signal'; setClock(0);
+    [...wires.querySelectorAll('.kd-wire')].forEach(g=>g.classList.remove('lit'));
+    [...wires.querySelectorAll('.kd-wire-glow')].forEach(g=>{
+      g.classList.remove('draw'); g.style.strokeDashoffset=g.style.strokeDasharray;
+    });
+    [...wires.querySelectorAll('.kd-spark')].forEach(s=>s.style.opacity='0');
+  }
+
+  function run(){
+    clearAll(); buildWires(); reset();
+
+    /* ── TIER 1 — 8 signals appear one by one ── */
+    const sigStep=300;
+    sigs.forEach((s,i)=>T(()=>s.classList.add('show'), 350+i*sigStep));
+    clock(0,12,2900);
+    const tPick=350+8*sigStep+250;
+    // dim every signal that won't be picked
+    T(()=>{
+      sigs.forEach((s,i)=>{ if(!PICKED.includes(i)) s.classList.add('dimmed'); });
+      labelEl.textContent='Selecting the strongest signals';
+    },tPick);
+
+    /* ── TIER 2 — 3 signals picked one at a time; each draws its wire, then its card ── */
+    const tCards=tPick+550;
+    T(()=>{
+      th1.classList.remove('act'); th2.classList.add('act');
+      phase.textContent='Composing'; labelEl.textContent='Three signals picked — composing a campaign for each';
+    },tCards);
+    clock(12,34,3700);
+    cards.forEach((card,i)=>{
+      const base=tCards+i*1000;                                   // one second apart
+      T(()=>sigs[PICKED[i]].classList.add('picked'), base);        // signal i is picked
+      T(()=>drawWire(i,520), base+250);                            // its wire draws
+      T(()=>card.classList.add('in'), base+780);                   // then its card appears
+      T(()=>card.classList.add('done'), base+1300);
+    });
+
+    /* ── TIER 3 — each card fires to all 5 networks; every net gets 3 dots ── */
+    const tPub=tCards+2*1000+1300+500;
+    T(()=>{
+      th2.classList.remove('act'); th3.classList.add('act');
+      phase.textContent='Publishing'; labelEl.textContent='Publishing every story to every channel';
+      // draw all 15 card→net wires
+      for(let i=3;i<W.length;i++) drawWire(i,460);
+    },tPub);
+    clock(34,58,6700);
+    // fire card by card; within a card stagger the 5 nets
+    cards.forEach((card,ci)=>{
+      nets.forEach((net,ni)=>{
+        const wireIdx=3+ci*5+ni;
+        const fireAt=tPub+550 + ci*1500 + ni*180;
+        T(()=>{
+          sendSpark(wireIdx,640,()=>{
+            flashNet(net);
+            const cEl=net.querySelector('.kn-count');
+            const n=Math.min(3,(parseInt(cEl.textContent)||0)+1);
+            cEl.textContent=n;
+            if(n===3) net.classList.add('done');
+          });
+        },fireAt);
+      });
+    });
+    const tEnd=tPub+550+3*1500+4*180+900;
+    T(()=>{
+      phase.textContent='Complete';
+      labelEl.textContent='15 posts live — 3 stories across 5 channels';
+    },tEnd);
+
+    /* loop */
+    T(run,tEnd+2800);
+  }
+
+  let started=false;
+  new IntersectionObserver((es)=>{es.forEach(e=>{
+    if(e.isIntersecting&&!started){ started=true; T(run,250); }
+  });},{threshold:0.2}).observe(demo);
+  let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{ if(started) buildWires(); },200); });
+})();
+</script>
+</body>
+</html>

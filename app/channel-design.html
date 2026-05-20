@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<script type="module" src="../assets/channel-context.js"></script>
+<title>Design — Gold &amp; Silver News — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+<style>
+  .color-input-wrap {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+  .color-swatch {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .preview-card {
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: end;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-channel" data-active="design" data-channel-name="Gold &amp; Silver News"></div>
+
+  <main class="app-main">
+    <div class="app-header">
+      <div>
+        <p class="label-up">Channel · Gold &amp; Silver News</p>
+        <h1 class="h1 mt-1">Design</h1>
+        <p class="body muted mt-1">Colors, fonts, and gradients used on this channel's published card images.</p>
+      </div>
+      <button class="btn btn-primary">Save design</button>
+    </div>
+
+    <div class="grid grid-2 gap-6">
+      <!-- LEFT: controls -->
+      <div class="flex flex-col gap-4">
+        <div class="card">
+          <h2 class="h3 mb-4">Brand colors</h2>
+          <div class="flex flex-col gap-3">
+            <div class="field">
+              <label class="field-label">Primary</label>
+              <div class="color-input-wrap">
+                <div class="color-swatch" style="background: #C9A24A;"></div>
+                <input class="input" style="border: 0; padding: 0; font-family: ui-monospace, monospace; font-size: 14px;" value="#C9A24A" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Accent (highlight in headlines)</label>
+              <div class="color-input-wrap">
+                <div class="color-swatch" style="background: #FFD700;"></div>
+                <input class="input" style="border: 0; padding: 0; font-family: ui-monospace, monospace; font-size: 14px;" value="#FFD700" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Background</label>
+              <div class="color-input-wrap">
+                <div class="color-swatch" style="background: #0E0E0E;"></div>
+                <input class="input" style="border: 0; padding: 0; font-family: ui-monospace, monospace; font-size: 14px;" value="#0E0E0E" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Text on card</label>
+              <div class="color-input-wrap">
+                <div class="color-swatch" style="background: #F4F1EA; border: 1px solid var(--border);"></div>
+                <input class="input" style="border: 0; padding: 0; font-family: ui-monospace, monospace; font-size: 14px;" value="#F4F1EA" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="h3 mb-4">Headline font</h2>
+          <select class="select">
+            <option>Bebas Neue (default — bold condensed)</option>
+            <option>Inter (clean modern)</option>
+            <option>Playfair Display (editorial serif)</option>
+            <option>Oswald (industrial condensed)</option>
+            <option>Anton (heavy display)</option>
+          </select>
+          <p class="tertiary mt-2" style="font-size: 12px;">Used for the headline overlay on every card image.</p>
+        </div>
+
+        <div class="card">
+          <h2 class="h3 mb-4">Background style</h2>
+          <p class="field-label mb-2">Default behavior when posting</p>
+          <div style="display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface);">
+            <button style="padding: 8px 14px; background: var(--brand-grad); color: white; border: 0; font-size: 13px; font-weight: 500; cursor: pointer;">Featured image first</button>
+            <button style="padding: 8px 14px; background: transparent; color: var(--text-secondary); border: 0; border-left: 1px solid var(--border); font-size: 13px; font-weight: 500; cursor: pointer;">AI first</button>
+            <button style="padding: 8px 14px; background: transparent; color: var(--text-secondary); border: 0; border-left: 1px solid var(--border); font-size: 13px; font-weight: 500; cursor: pointer;">Solid</button>
+          </div>
+          <p class="tertiary mt-2" style="font-size: 12px;">When a featured image is missing, falls back to AI-generated.</p>
+        </div>
+
+        <div class="card">
+          <h2 class="h3 mb-2">Watermark / logo</h2>
+          <label class="flex gap-3 mb-3" style="align-items: center; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--purple-700); width: 18px; height: 18px;" />
+            <span class="body" style="font-weight: 500;">Show channel domain in footer of card</span>
+          </label>
+          <input class="input" style="font-family: ui-monospace, monospace; font-size: 13px;" value="GOLDSILVERNEWS.COM" />
+        </div>
+      </div>
+
+      <!-- RIGHT: live preview -->
+      <div>
+        <p class="label-up mb-3">Live preview · Instagram 4:5</p>
+        <div class="preview-card" style="background: linear-gradient(135deg, #0E0E0E 0%, #2a1a0a 60%, #C9A24A 200%); border: 1px solid var(--border);">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6));"></div>
+          <div style="position: absolute; top: 24px; left: 24px; font-size: 11px; letter-spacing: 0.08em; opacity: 0.7; text-transform: uppercase;">VIA REUTERS</div>
+          <div style="position: relative; width: 100%;">
+            <h3 style="font-family: 'Bebas Neue', impact, sans-serif; font-size: 42px; line-height: 0.95; letter-spacing: 0.02em; margin: 0; color: #F4F1EA;">GOLD BREAKS PAST <span style="color: #FFD700;">$4,700</span> AS TENSIONS EASE</h3>
+            <p style="font-size: 10px; opacity: 0.6; letter-spacing: 0.06em; margin-top: 12px;">GOLDSILVERNEWS.COM</p>
+          </div>
+        </div>
+        <p class="tertiary mt-3 text-center" style="font-size: 12px;">Preview updates as you change settings on the left.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+</body>
+</html>

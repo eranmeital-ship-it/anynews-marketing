@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style id="ag-hide">html{visibility:hidden}</style>
+<script type="module" src="../assets/app-guard.js"></script>
+<title>Account — AnyNews.ai</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+  <div data-include="sidebar-workspace" data-active="account"></div>
+
+  <main class="app-main" style="max-width: 720px;">
+    <div class="app-header">
+      <div>
+        <p class="label-up">You</p>
+        <h1 class="h1 mt-1">Account</h1>
+        <p class="body muted mt-1">Your personal profile and security settings.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      <!-- Profile -->
+      <div class="card-lg">
+        <h2 class="h2 mb-4">Profile</h2>
+        <div class="flex gap-4 mb-6" style="align-items: center;">
+          <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--brand-grad); color: white; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 600;">EM</div>
+          <div>
+            <button class="btn btn-secondary btn-sm">Change avatar</button>
+            <p class="tertiary mt-1" style="font-size: 12px;">PNG or JPG · max 2MB</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="grid grid-2 gap-4">
+            <div class="field">
+              <label class="field-label">Full name</label>
+              <input class="input" value="Eran Meital" />
+            </div>
+            <div class="field">
+              <label class="field-label">Display name</label>
+              <input class="input" value="Eran" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Email</label>
+            <input class="input" type="email" value="eran@anynews.ai" />
+          </div>
+          <div class="field">
+            <label class="field-label">Time zone</label>
+            <select class="select">
+              <option>Asia/Jerusalem (GMT+3)</option>
+              <option>America/New_York (GMT-5)</option>
+              <option>Europe/London (GMT+0)</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button class="btn btn-primary">Save profile</button>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="card-lg">
+        <h2 class="h2 mb-4">Password &amp; security</h2>
+        <div class="flex flex-col gap-4">
+          <div class="field">
+            <label class="field-label">Current password</label>
+            <input class="input" type="password" placeholder="••••••••" />
+          </div>
+          <div class="field">
+            <label class="field-label">New password</label>
+            <input class="input" type="password" placeholder="At least 10 characters" />
+          </div>
+          <div class="field">
+            <label class="field-label">Confirm new password</label>
+            <input class="input" type="password" />
+          </div>
+        </div>
+        <div class="mt-6">
+          <button class="btn btn-primary">Update password</button>
+        </div>
+
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
+          <h3 class="h3 mb-2">Two-factor authentication</h3>
+          <p class="body muted mb-4">Add an extra layer of security with an authenticator app.</p>
+          <button class="btn btn-secondary btn-sm">Set up 2FA</button>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card-lg">
+        <h2 class="h2 mb-4">Notifications</h2>
+        <div class="flex flex-col gap-4">
+          <label class="flex gap-3" style="align-items: center; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--purple-700); width: 18px; height: 18px;" />
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Posts awaiting review</p>
+              <p class="tertiary" style="font-size: 12px;">Email when posts need your approval</p>
+            </div>
+          </label>
+          <label class="flex gap-3" style="align-items: center; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--purple-700); width: 18px; height: 18px;" />
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Publish failures</p>
+              <p class="tertiary" style="font-size: 12px;">Email when a post fails to publish</p>
+            </div>
+          </label>
+          <label class="flex gap-3" style="align-items: center; cursor: pointer;">
+            <input type="checkbox" style="accent-color: var(--purple-700); width: 18px; height: 18px;" />
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Weekly performance digest</p>
+              <p class="tertiary" style="font-size: 12px;">Summary of all channels every Monday</p>
+            </div>
+          </label>
+          <label class="flex gap-3" style="align-items: center; cursor: pointer;">
+            <input type="checkbox" style="accent-color: var(--purple-700); width: 18px; height: 18px;" />
+            <div>
+              <p class="body" style="font-weight: 500; margin: 0;">Product updates</p>
+              <p class="tertiary" style="font-size: 12px;">New features and improvements</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Sign out + delete -->
+      <div class="card-lg" style="border-color: var(--danger-soft);">
+        <h2 class="h3 mb-2" style="color: var(--danger);">Danger zone</h2>
+        <p class="body muted mb-4">These actions affect your entire account.</p>
+        <div class="flex gap-2" style="flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm">Export all account data</button>
+          <a href="signin.html" class="btn btn-secondary btn-sm">Sign out</a>
+          <button class="btn btn-danger btn-sm">Delete account</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/partials.js"></script>
+</body>
+</html>
