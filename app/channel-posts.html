@@ -98,7 +98,7 @@
             Calendar
           </button>
         </div>
-        <a href="channel-signal-room.html" class="btn btn-primary">
+        <a href="channel-signal-room" class="btn btn-primary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
           New from signal
         </a>
@@ -265,7 +265,7 @@
       <div style="padding:48px 32px;text-align:center">
         <p class="body" style="font-weight:600;font-size:16px;margin:0 0 8px">No posts yet</p>
         <p class="tertiary" style="font-size:13px;margin:0 0 16px">Go to the Signal Room, score signals, and click <b>Create post</b> on one to start.</p>
-        <a href="channel-signal-room.html?id=${encodeURIComponent(channelId)}" class="btn btn-secondary">Open Signal Room</a>
+        <a href="channel-signal-room?id=${encodeURIComponent(channelId)}" class="btn btn-secondary">Open Signal Room</a>
       </div>`;
   }
 
@@ -312,7 +312,7 @@
 
   // The header CTA "New from signal" needs the channel ?id= to land in the
   // right signal room (channel-context redirects to dashboard otherwise).
-  document.querySelectorAll('a[href="channel-signal-room.html"]').forEach(a => {
+  document.querySelectorAll('a[href="channel-signal-room"]').forEach(a => {
     a.href = 'channel-signal-room.html?id=' + encodeURIComponent(channelId);
   });
 
