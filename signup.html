@@ -62,7 +62,7 @@
     btn.textContent = 'Creating account…';
     try {
       await signUp({ email, password, fullName });
-      window.location.href = 'onboarding.html';
+      window.location.href = 'onboarding';
     } catch (e) {
       showError(e?.message || 'Sign up failed.');
       btn.disabled = !termsEl.checked;

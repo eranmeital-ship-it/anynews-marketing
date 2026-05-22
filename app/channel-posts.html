@@ -219,7 +219,7 @@
     return `<span class="post-status-pill ${cls}">&#9679; ${esc(label)}</span>`;
   }
   function rowHTML(p){
-    const href = 'post-editor.html?id=' + encodeURIComponent(channelId) + '&post=' + encodeURIComponent(p.id);
+    const href = 'post-editor?id=' + encodeURIComponent(channelId) + '&post=' + encodeURIComponent(p.id);
     const titleText = (p.title || 'Untitled draft').replace(/\*\*/g, '');
     const thumbStyle = p.image_url
       ? `background:url('${esc(p.image_url)}') center/cover no-repeat`
@@ -313,7 +313,7 @@
   // The header CTA "New from signal" needs the channel ?id= to land in the
   // right signal room (channel-context redirects to dashboard otherwise).
   document.querySelectorAll('a[href="channel-signal-room"]').forEach(a => {
-    a.href = 'channel-signal-room.html?id=' + encodeURIComponent(channelId);
+    a.href = 'channel-signal-room?id=' + encodeURIComponent(channelId);
   });
 
   // ─── Publish to Instagram (Bundle.social POC, slice 2) ────────────────

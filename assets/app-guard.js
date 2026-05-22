@@ -1,6 +1,6 @@
 import { requireAuth, getProfile } from './auth.js';
 
-const user = await requireAuth('../login.html');
+const user = await requireAuth('../login');
 if (user) {
   let onboarded = true;
   try {
@@ -9,7 +9,7 @@ if (user) {
   } catch (e) { /* on failure, don't trap — let the page render */ }
 
   if (!onboarded) {
-    window.location.replace('../onboarding.html');
+    window.location.replace('../onboarding');
   } else {
     document.getElementById('ag-hide')?.remove();
   }

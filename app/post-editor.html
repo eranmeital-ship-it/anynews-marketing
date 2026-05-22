@@ -7632,7 +7632,7 @@ document.addEventListener('click', (e) => {
         title: 'Couldn’t check your social connections',
         body:  `Error: ${refreshError}. Refresh the page and try again, or open the Sources page to verify your connected accounts.`,
         ctaText: 'Open Sources',
-        onCta: () => { location.href = `channel-sources.html?id=${encodeURIComponent(CHANNEL_ID)}`; },
+        onCta: () => { location.href = `channel-sources?id=${encodeURIComponent(CHANNEL_ID)}`; },
       });
       return;
     }
@@ -7642,14 +7642,14 @@ document.addEventListener('click', (e) => {
           title: 'Publish coming soon for these platforms',
           body:  `You’re connected on ${pend.join(', ')}, but AnyNews currently only publishes to Instagram. Connect Instagram on the Sources page to publish today.`,
           ctaText: 'Open Sources',
-          onCta: () => { location.href = `channel-sources.html?id=${encodeURIComponent(CHANNEL_ID)}`; },
+          onCta: () => { location.href = `channel-sources?id=${encodeURIComponent(CHANNEL_ID)}`; },
         });
       } else {
         openPublishInfoModal({
           title: 'No social account connected',
           body:  'This channel has no Bundle.social connections yet. Connect Instagram on the Sources page first, then come back here to publish.',
           ctaText: 'Open Sources',
-          onCta: () => { location.href = `channel-sources.html?id=${encodeURIComponent(CHANNEL_ID)}`; },
+          onCta: () => { location.href = `channel-sources?id=${encodeURIComponent(CHANNEL_ID)}`; },
         });
       }
       return;
@@ -7776,7 +7776,7 @@ document.addEventListener('click', (e) => {
       const doneBtn = document.getElementById('pe-pub-done');
       if (doneBtn) { doneBtn.textContent = 'Redirecting to Posts…'; doneBtn.disabled = true; }
       setTimeout(() => {
-        location.assign(`channel-posts.html?id=${encodeURIComponent(CHANNEL_ID)}`);
+        location.assign(`channel-posts?id=${encodeURIComponent(CHANNEL_ID)}`);
       }, 1500);
     }
   }

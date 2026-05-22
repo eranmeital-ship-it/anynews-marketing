@@ -17,7 +17,7 @@ const ICONS = {
 };
 
 // ────────── logo ──────────
-function logo(href = '../index.html') {
+function logo(href = '../index') {
   return `
     <a href="${href}" class="logo">
       <span class="logo-mark">${ICONS.logo}</span>
@@ -34,18 +34,18 @@ function topnav(activePage = '') {
   return `
     <div class="topnav">
       <div class="topnav-left">
-        ${logo('index.html')}
+        ${logo('index')}
         <nav class="topnav-nav">
-          ${link('index.html', 'Product')}
-          ${link('how-it-works.html', 'How it works')}
-          ${link('pricing.html', 'Pricing')}
-          ${link('about.html', 'About')}
-          ${link('contact.html', 'Contact')}
+          ${link('index', 'Product')}
+          ${link('how-it-works', 'How it works')}
+          ${link('pricing', 'Pricing')}
+          ${link('about', 'About')}
+          ${link('contact', 'Contact')}
         </nav>
       </div>
       <div class="topnav-right">
-        <a class="topnav-link" href="app/signin.html">Sign in</a>
-        <a class="btn btn-primary btn-sm" href="app/signup.html">Start free ${ICONS.arrow}</a>
+        <a class="topnav-link" href="app/signin">Sign in</a>
+        <a class="btn btn-primary btn-sm" href="app/signup">Start free ${ICONS.arrow}</a>
       </div>
     </div>`;
 }
@@ -57,7 +57,7 @@ function footer() {
       <div class="container">
         <div class="footer-grid">
           <div>
-            ${logo('index.html')}
+            ${logo('index')}
             <p class="body mt-4 muted" style="max-width: 320px;">
               Run your own AI newsroom. Pick any topic, publish to every social.
             </p>
@@ -65,17 +65,17 @@ function footer() {
           <div>
             <h4 class="footer-col-title">Product</h4>
             <div class="footer-links">
-              <a href="index.html">Home</a>
-              <a href="how-it-works.html">How it works</a>
-              <a href="pricing.html">Pricing</a>
-              <a href="app/signup.html">Get started</a>
+              <a href="index">Home</a>
+              <a href="how-it-works">How it works</a>
+              <a href="pricing">Pricing</a>
+              <a href="app/signup">Get started</a>
             </div>
           </div>
           <div>
             <h4 class="footer-col-title">Company</h4>
             <div class="footer-links">
-              <a href="about.html">About</a>
-              <a href="contact.html">Contact</a>
+              <a href="about">About</a>
+              <a href="contact">Contact</a>
               <a href="#">Press</a>
               <a href="#">Careers</a>
             </div>
@@ -129,25 +129,25 @@ function sidebarWorkspace(activeItem = 'dashboard') {
   };
   return `
     <aside class="sidebar">
-      ${logo('../index.html')}
+      ${logo('../index')}
 
       <div class="sidebar-section-title">Workspace</div>
-      ${item('dashboard', 'Dashboard', SIDEBAR_ICO.home, 'dashboard.html')}
-      ${item('channels', 'News channels', SIDEBAR_ICO.channels, 'dashboard.html')}
-      ${item('analytics', 'Analytics', SIDEBAR_ICO.analytics, 'analytics.html')}
-      ${item('templates', 'Templates', SIDEBAR_ICO.templates, 'templates.html')}
+      ${item('dashboard', 'Dashboard', SIDEBAR_ICO.home, 'dashboard')}
+      ${item('channels', 'News channels', SIDEBAR_ICO.channels, 'dashboard')}
+      ${item('analytics', 'Analytics', SIDEBAR_ICO.analytics, 'analytics')}
+      ${item('templates', 'Templates', SIDEBAR_ICO.templates, 'templates')}
 
       <div class="sidebar-section-title">Account</div>
-      ${item('billing', 'Usage & billing', SIDEBAR_ICO.billing, 'billing.html')}
-      ${item('account', 'Account', SIDEBAR_ICO.account, 'account.html')}
-      ${item('ops', 'Scheduled refresh', SIDEBAR_ICO.ops, 'ops.html')}
+      ${item('billing', 'Usage & billing', SIDEBAR_ICO.billing, 'billing')}
+      ${item('account', 'Account', SIDEBAR_ICO.account, 'account')}
+      ${item('ops', 'Scheduled refresh', SIDEBAR_ICO.ops, 'ops')}
 
       <div class="sidebar-spacer"></div>
       <a href="#" class="sidebar-item sb-signout">
         <span class="ico">${SIDEBAR_ICO.signout}</span>
         <span>Sign out</span>
       </a>
-      <a href="account.html" class="sidebar-user">
+      <a href="account" class="sidebar-user">
         <span class="avatar sb-avatar">··</span>
         <div style="display: flex; flex-direction: column; line-height: 1.2;">
           <span class="sb-name" style="font-size: 13px; font-weight: 600; color: var(--text-primary);">&nbsp;</span>
@@ -178,9 +178,9 @@ function sidebarChannel(channelName = 'Gold & Silver News', channelSlug = 'gold-
 
   return `
     <aside class="sidebar">
-      ${logo('../index.html')}
+      ${logo('../index')}
 
-      <a href="dashboard.html" class="sidebar-item" style="margin-bottom: 8px; color: var(--text-tertiary);">
+      <a href="dashboard" class="sidebar-item" style="margin-bottom: 8px; color: var(--text-tertiary);">
         ${SIDEBAR_ICO.back}
         <span style="font-size: 13px;">All news channels</span>
       </a>
@@ -191,25 +191,25 @@ function sidebarChannel(channelName = 'Gold & Silver News', channelSlug = 'gold-
       </div>
 
       <div class="sidebar-section-title">Channel</div>
-      ${item('signal-room', 'Signal Room', SIDEBAR_ICO.signal, 'channel-signal-room.html')}
-      ${item('posts', 'Posts', SIDEBAR_ICO.posts, 'channel-posts.html')}
-      ${item('sources', 'Sources', SIDEBAR_ICO.sources, 'channel-sources.html')}
-      ${item('connections', 'Connected socials', SIDEBAR_ICO.connections, 'channel-connections.html')}
+      ${item('signal-room', 'Signal Room', SIDEBAR_ICO.signal, 'channel-signal-room')}
+      ${item('posts', 'Posts', SIDEBAR_ICO.posts, 'channel-posts')}
+      ${item('sources', 'Sources', SIDEBAR_ICO.sources, 'channel-sources')}
+      ${item('connections', 'Connected socials', SIDEBAR_ICO.connections, 'channel-connections')}
 
       <div class="sidebar-section-title">Brand</div>
-      ${item('voice', 'Brand voice', SIDEBAR_ICO.voice, 'channel-brand-voice.html')}
-      ${item('design', 'Design', SIDEBAR_ICO.design, 'channel-design.html')}
+      ${item('voice', 'Brand voice', SIDEBAR_ICO.voice, 'channel-brand-voice')}
+      ${item('design', 'Design', SIDEBAR_ICO.design, 'channel-design')}
 
       <div class="sidebar-section-title">Insights</div>
-      ${item('analytics', 'Analytics', SIDEBAR_ICO.analytics, 'channel-analytics.html')}
-      ${item('settings', 'Channel settings', SIDEBAR_ICO.settings, 'channel-settings.html')}
+      ${item('analytics', 'Analytics', SIDEBAR_ICO.analytics, 'channel-analytics')}
+      ${item('settings', 'Channel settings', SIDEBAR_ICO.settings, 'channel-settings')}
 
       <div class="sidebar-spacer"></div>
       <a href="#" class="sidebar-item sb-signout">
         <span class="ico">${SIDEBAR_ICO.signout}</span>
         <span>Sign out</span>
       </a>
-      <a href="account.html" class="sidebar-user">
+      <a href="account" class="sidebar-user">
         <span class="avatar sb-avatar">··</span>
         <div style="display: flex; flex-direction: column; line-height: 1.2;">
           <span class="sb-name" style="font-size: 13px; font-weight: 600; color: var(--text-primary);">&nbsp;</span>
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.addEventListener('click', async (e) => {
         e.preventDefault();
         try { await window.anynewsAuth.signOut(); } catch (err) { /* fall through to redirect */ }
-        window.location.replace('../login.html');
+        window.location.replace('../login');
       });
     });
   }

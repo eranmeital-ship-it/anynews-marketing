@@ -25,7 +25,7 @@
     btn.textContent = 'One moment…';
     try {
       await completeOnboarding();
-      window.location.href = 'app/new-channel.html';
+      window.location.href = 'app/new-channel';
     } catch (e) {
       showError(e?.message || 'Could not continue. Please try again.');
       btn.disabled = false;

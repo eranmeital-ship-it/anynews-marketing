@@ -399,7 +399,7 @@
     btn.textContent = 'Creating…';
     try {
       const channel = await createChannel({ name, description: descEl.value.trim() });
-      window.location.href = 'channel-signal-room.html?id=' + encodeURIComponent(channel.id);
+      window.location.href = 'channel-signal-room?id=' + encodeURIComponent(channel.id);
     } catch (e) {
       errEl.textContent = e?.message || 'Could not create channel.';
       errEl.style.display = 'block';

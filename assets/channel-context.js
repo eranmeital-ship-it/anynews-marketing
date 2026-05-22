@@ -5,7 +5,7 @@ const id = params.get('id');
 
 // No id → bounce to dashboard. App-guard already handled auth.
 if (!id) {
-  location.replace('dashboard.html');
+  location.replace('dashboard');
 } else {
   // Wait for an auth session before querying — RLS requires it.
   // app-guard.js has already kicked the redirect to login if needed; we just
@@ -14,7 +14,7 @@ if (!id) {
   if (session) {
     const channel = await getChannel(id).catch(() => null);
     if (!channel) {
-      location.replace('dashboard.html');
+      location.replace('dashboard');
     } else {
       // Feed the channel name into the sidebar placeholder before partials.js
       // renders it. Both this script and partials.js run before DOMContentLoaded;

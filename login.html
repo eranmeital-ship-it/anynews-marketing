@@ -36,7 +36,7 @@
     btn.textContent = 'Signing in…';
     try {
       await signIn({ email, password });
-      window.location.href = 'app/dashboard.html';
+      window.location.href = 'app/dashboard';
     } catch (e) {
       showError(e?.message || 'Sign in failed.');
       btn.disabled = false;

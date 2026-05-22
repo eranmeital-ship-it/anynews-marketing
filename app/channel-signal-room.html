@@ -899,7 +899,7 @@
           imageUrl: sig.image_url,
           sourceUrl: sig.raw_url,
         });
-        window.location.href = `post-editor.html?id=${encodeURIComponent(channelId)}&post=${encodeURIComponent(post.id)}`;
+        window.location.href = `post-editor?id=${encodeURIComponent(channelId)}&post=${encodeURIComponent(post.id)}`;
       } catch (err) {
         alert(err?.message || 'Could not create post.');
         actionBtn.disabled = false;

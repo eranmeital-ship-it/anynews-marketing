@@ -254,7 +254,7 @@
     return '<span class="channel-badge">Draft</span>';
   }
   function rowHTML(ch){
-    const href = 'channel-signal-room.html?id=' + encodeURIComponent(ch.id);
+    const href = 'channel-signal-room?id=' + encodeURIComponent(ch.id);
     const sub = ch.description ? esc(ch.description.split('\n')[0]).slice(0, 80) : 'No description yet';
     return `
       <a href="${href}" class="channel-row">

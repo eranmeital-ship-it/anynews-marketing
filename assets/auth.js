@@ -41,7 +41,7 @@ export async function signOut() {
   if (error) throw error;
 }
 
-export async function requireAuth(loginPath = '/login.html') {
+export async function requireAuth(loginPath = '/login') {
   const { data, error } = await supabase.auth.getUser();
   if (error || !data?.user) {
     window.location.replace(loginPath);
