@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/app/:path*", "destination": "https://anynews-app.vercel.app/app/:path*" },
+    { "source": "/assets/:path*", "destination": "https://anynews-app.vercel.app/assets/:path*" },
+    { "source": "/login", "destination": "https://anynews-app.vercel.app/login" },
+    { "source": "/signup", "destination": "https://anynews-app.vercel.app/signup" },
+    { "source": "/onboarding", "destination": "https://anynews-app.vercel.app/onboarding" }
+  ]
 }
