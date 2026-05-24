@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var cookies = document.cookie;
   var loggedIn = cookies.split(';').some(function (c) {
-    return c.trim().indexOf('sb-ekwtyahqnsoulhocvjpx-auth-token') === 0;
+    return c.trim().indexOf('anynews_presence=') === 0;
   });
   if (!loggedIn) return;
   var navs = document.querySelectorAll('.nav-right');
