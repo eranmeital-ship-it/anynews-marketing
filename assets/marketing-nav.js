@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var navs = document.querySelectorAll('.nav-right');
   if (!navs.length) return;
   navs.forEach(function (nav) {
-    nav.innerHTML = '<a href="/app" class="btn-pill">Go to dashboard →</a>';
+    nav.innerHTML = '<a href="/app/dashboard" class="btn-pill">Go to dashboard →</a>';
   });
 });
